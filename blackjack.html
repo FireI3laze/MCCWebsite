@@ -176,7 +176,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div class="card rounded-lg overflow-hidden">
                 <div class="machine-image h-96 bg-cover bg-center"
-                     style="background-image: url('https://readdy.ai/api/search-image?query=detailed%20minecraft%20slot%20machine%20mechanism%20with%20redstone%20components%2C%20hoppers%2C%20and%20item%20frames%2C%20dark%20casino%20environment%20with%20glowing%20elements%2C%20high%20quality%20render%20showing%20the%20complete%20machine%20setup%20from%20front%20view&width=800&height=600&seq=machine123&orientation=landscape')"></div>
+                     style="background-image: url('assets/BlackJack.png')"></div>
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex items-center">
@@ -248,38 +248,39 @@
         </div>
     </section>
     <section class="mb-12">
-        <h2 class="minecraft-font text-3xl mb-6 flex items-center">
-            <div class="w-8 h-8 flex items-center justify-center mr-2">
-                <i class="ri-coins-line text-primary"></i>
-            </div>
-            Betting Options
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 machine-betting-options">
-            <div class="card rounded-lg p-6">
-                <h3 class="minecraft-font text-xl mb-3">Basic Bet</h3>
-                <p class="text-gray-300 mb-4">Description of basic betting option...</p>
-                <div class="flex items-center justify-between">
-                    <span class="text-primary">1-5 Diamonds</span>
-                    <span class="text-gray-400">2x Payout</span>
-                </div>
-            </div>
-            <!-- More betting options will be added dynamically -->
-        </div>
-    </section>
-    <section class="mb-12">
-        <h2 class="minecraft-font text-3xl mb-6 flex items-center">
-            <div class="w-8 h-8 flex items-center justify-center mr-2">
-                <i class="ri-pie-chart-line text-primary"></i>
-            </div>
-            Win Probabilities
-        </h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div class="card rounded-lg p-6">
-                <div id="probability-chart" class="h-80"></div>
+            <!-- Left Column -->
+            <div>
+
+                <h2 class="minecraft-font text-3xl mb-6 flex">
+                    <div class="w-8 h-8 flex items-center justify-center mr-2">
+                        <i class="ri-coins-line text-primary"></i>
+                    </div>
+                    Betting Options
+                </h2>
+                <div class="card rounded-lg p-6">
+                    <h4 class="minecraft-font text-lg mb-3">Basic Bet</h4>
+                    <p class="text-gray-300 mb-4">Description of basic betting option...</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-primary">1-5 Diamonds</span>
+                        <span class="text-gray-400">2x Payout</span>
+                    </div>
+                </div>
+                <!-- More betting options could go here -->
             </div>
-            <div class="card rounded-lg p-6 machine-probability-explanation">
-                <h3 class="minecraft-font text-xl mb-3">Understanding Your Odds</h3>
-                <p class="text-gray-300">Explanation of win probabilities...</p>
+
+            <!-- Right Column -->
+            <div>
+                <h2 class="minecraft-font text-3xl mb-6 flex">
+                    <div class="w-8 h-8 flex items-center justify-center mr-2">
+                        <i class="ri-pie-chart-line text-primary"></i>
+                    </div>
+                    Win Probabilities
+                </h2>
+                <div class="card rounded-lg p-6">
+                    <h4 class="minecraft-font text-lg mb-3">Understanding Your Odds</h4>
+                    <p class="text-gray-300">Explanation of win probabilities...</p>
+                </div>
             </div>
         </div>
     </section>
