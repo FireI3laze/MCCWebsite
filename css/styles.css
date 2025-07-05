@@ -1,0 +1,81 @@
+/* styles.css */
+
+body {
+  font-family: 'VT323', monospace;
+  background-color: #121212;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+}
+
+.minecraft-font {
+  font-family: 'Pacifico', cursive;
+  color: #4ade80;
+  user-select: none;
+}
+
+.diamond-icon {
+  color: #4ade80;
+}
+
+.minecraft-button {
+  background-color: #4ade80;
+  color: #121212;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.minecraft-button:hover {
+  background-color: #22c55e;
+}
+
+.minecraft-button:active {
+  background-color: #16a34a;
+}
+
+.card {
+  background-color: #1f2937; /* Tailwind slate-800 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+a.minecraft-button {
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  user-select: none;
+}
+
+#particles-container {
+  z-index: -1;
+}
+
+/* Optional: scrollbar styling for tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+th {
+  background-color: #374151; /* Tailwind gray-700 */
+  color: #9ca3af; /* Tailwind gray-400 */
+  user-select: none;
+}
+
+tbody tr:hover {
+  background-color: #374151;
+}
+
+/* Responsive grid gaps and spacing are handled by Tailwind */
