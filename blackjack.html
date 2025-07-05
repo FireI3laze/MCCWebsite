@@ -159,15 +159,7 @@
                 </div>
                 <span>Back to Casino</span>
             </a>
-            <h1 class="minecraft-font text-3xl text-primary machine-name">Machine Name</h1>
-        </div>
-        <div class="flex items-center space-x-4">
-            <button id="login-button" class="minecraft-button px-4 py-2 !rounded-button flex items-center">
-                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                    <i class="ri-discord-line"></i>
-                </div>
-                <span>Login with Discord</span>
-            </button>
+            <h1 class="minecraft-font text-3xl text-primary machine-name">Black Jack</h1>
         </div>
     </div>
 </header>
@@ -185,7 +177,7 @@
                             </div>
                             <div>
                                 <h3 class="minecraft-font text-xl">Betting Range</h3>
-                                <p class="text-gray-400 machine-betting-range">1-50 Diamonds</p>
+                                <p class="text-gray-400 machine-betting-range">0-128 Diamonds</p>
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -194,24 +186,42 @@
                             </div>
                             <div>
                                 <h3 class="minecraft-font text-xl">Win Rate</h3>
-                                <p class="text-gray-400 machine-win-rate">48.6%</p>
+                                <p class="text-gray-400 machine-win-rate">~50%</p>
                             </div>
                         </div>
                     </div>
                     <div class="border-t border-gray-700 pt-4">
-                        <h3 class="minecraft-font text-xl mb-3">Quick Stats</h3>
+                        <h3 class="minecraft-font text-xl mb-3">Controls</h3>
                         <div class="grid grid-cols-3 gap-4">
                             <div class="text-center">
-                                <p class="text-gray-400">Total Plays</p>
-                                <p class="minecraft-font text-xl machine-total-plays">12,458</p>
+                                <p class="text-gray-400">Left Button</p>
+                                <p class="minecraft-font text-xl machine-total-plays">Submits score and lets the machine play</p>
                             </div>
                             <div class="text-center">
-                                <p class="text-gray-400">Biggest Win</p>
-                                <p class="minecraft-font text-xl machine-biggest-win">264</p>
+                                <p class="text-gray-400">Right Button</p>
+                                <p class="minecraft-font text-xl machine-biggest-win">starts a game<br>pulls a card</p>
                             </div>
                             <div class="text-center">
-                                <p class="text-gray-400">Active Players</p>
-                                <p class="minecraft-font text-xl machine-active-players">87</p>
+                                <p class="text-gray-400">Pay in/out</p>
+                                <p class="minecraft-font text-xl machine-active-players">Barrel (right) for bets<br>Chest (left) for payout</p>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-700 pt-4">
+                        <h3 class="minecraft-font text-xl mb-3">Payout Ratio</h3>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <p class="text-gray-400">Win</p>
+                                <p class="minecraft-font text-xl machine-total-plays">x2</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-gray-400">Tie</p>
+                                <p class="minecraft-font text-xl machine-biggest-win">x1</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-gray-400">Loss</p>
+                                <p class="minecraft-font text-xl machine-active-players">x0</p>
                             </div>
                         </div>
                     </div>
@@ -226,7 +236,18 @@
                         How It Works
                     </h2>
                     <div class="prose prose-invert machine-description">
-                        <p>Description of how the machine works...</p>
+                        <p class="text-gray-300">
+                            In this version of Black Jack, the player tries to get as close as possible to a maximum (14) score by drawing cards valued from 1 to 7, without going over that maximum (15). The player always draws first and can take as many cards as they want to improve their total score.
+                        </p>
+                        <p class="text-gray-300">
+                            After the player finishes, the dealer takes their turn, drawing cards with values from 1 to 7 to try and beat the player’s score without exceeding the maximum.
+                        </p>
+                        <p class="text-gray-300">
+                            If the player exceeds the maximum score, they lose immediately.
+                        </p>
+                        <p class="text-gray-300">
+                            At the end, the side with the score closest to the maximum without going over wins. If both have the same score, the result is a tie.
+                        </p>
                     </div>
                 </div>
                 <div class="card rounded-lg p-6">
@@ -248,42 +269,103 @@
         </div>
     </section>
     <section class="mb-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Left Column -->
-            <div>
-
-                <h2 class="minecraft-font text-3xl mb-6 flex">
-                    <div class="w-8 h-8 flex items-center justify-center mr-2">
-                        <i class="ri-coins-line text-primary"></i>
-                    </div>
-                    Betting Options
-                </h2>
-                <div class="card rounded-lg p-6">
-                    <h4 class="minecraft-font text-lg mb-3">Basic Bet</h4>
-                    <p class="text-gray-300 mb-4">Description of basic betting option...</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-primary">1-5 Diamonds</span>
-                        <span class="text-gray-400">2x Payout</span>
-                    </div>
+        <div>
+            <h2 class="minecraft-font text-3xl mb-6 flex items-center">
+                <div class="w-8 h-8 flex items-center justify-center mr-2">
+                    <i class="ri-pie-chart-line text-primary"></i>
                 </div>
-                <!-- More betting options could go here -->
-            </div>
+                Probabilities (approximated values)
+            </h2>
+            <div class="flex flex-wrap gap-8">
+                <!-- Win Probabilities -->
+                <div class="card rounded-lg p-6 flex-1 min-w-[300px]">
+                    <h4 class="minecraft-font text-lg mb-3 flex items-center">
+                        <div class="w-6 h-6 flex items-center justify-center mr-2">
+                            <i class="ri-error-warning-line text-primary"></i>
+                        </div>
+                        Win Probabilities
+                    </h4>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                        <tr class="border-b border-gray-600">
+                            <th class="py-2">Player Score</th>
+                            <th class="py-2">Win %</th>
+                            <th class="py-2">Tie %</th>
+                            <th class="py-2">Dealer Win %</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">9</td>
+                            <td class="py-2">7.2%</td>
+                            <td class="py-2">4.4%</td>
+                            <td class="py-2">88.4%</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">10</td>
+                            <td class="py-2">14.5%</td>
+                            <td class="py-2">5.9%</td>
+                            <td class="py-2">79.6%</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">11</td>
+                            <td class="py-2">28.3%</td>
+                            <td class="py-2">7.6%</td>
+                            <td class="py-2">64.1%</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">12</td>
+                            <td class="py-2">50.0%</td>
+                            <td class="py-2">8.8%</td>
+                            <td class="py-2">41.2%</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">13</td>
+                            <td class="py-2">76.4%</td>
+                            <td class="py-2">9.5%</td>
+                            <td class="py-2">14.1%</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">14</td>
+                            <td class="py-2">95.0%</td>
+                            <td class="py-2">5.0%</td>
+                            <td class="py-2">0.0%</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-gray-300 mb-6"><br>
+                        <i class="ri-information-2-line"></i> Calculated with ChatGPT</p>
+                </div>
 
-            <!-- Right Column -->
-            <div>
-                <h2 class="minecraft-font text-3xl mb-6 flex">
-                    <div class="w-8 h-8 flex items-center justify-center mr-2">
-                        <i class="ri-pie-chart-line text-primary"></i>
-                    </div>
-                    Win Probabilities
-                </h2>
-                <div class="card rounded-lg p-6">
-                    <h4 class="minecraft-font text-lg mb-3">Understanding Your Odds</h4>
-                    <p class="text-gray-300">Explanation of win probabilities...</p>
+                <!-- Bust Probabilities -->
+                <div class="card rounded-lg p-6 flex-1 min-w-[200px]">
+                    <h4 class="minecraft-font text-lg mb-3 flex items-center">
+                        <div class="w-6 h-6 flex items-center justify-center mr-2">
+                            <i class="ri-error-warning-line text-primary"></i>
+                        </div>
+                        Bust Probabilities
+                    </h4>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                        <tr class="border-b border-gray-600">
+                            <th class="py-2">Player Score</th>
+                            <th class="py-2">Bust %</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="border-b border-gray-700"><td class="py-2">8</td><td class="py-2">14.28%</td></tr>
+                        <tr class="border-b border-gray-700"><td class="py-2">9</td><td class="py-2">28.57%</td></tr>
+                        <tr class="border-b border-gray-700"><td class="py-2">10</td><td class="py-2">42.85%</td></tr>
+                        <tr class="border-b border-gray-700"><td class="py-2">11</td><td class="py-2">57.14%</td></tr>
+                        <tr class="border-b border-gray-700"><td class="py-2">12</td><td class="py-2">71.42%</td></tr>
+                        <tr><td class="py-2">13</td><td class="py-2">85.71%</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </section>
+
     <section class="mb-12">
         <h2 class="minecraft-font text-3xl mb-6 flex items-center">
             <div class="w-8 h-8 flex items-center justify-center mr-2">
