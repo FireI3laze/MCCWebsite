@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diamond Casino - Minecraft Gambling</title>
+    <title>Ashen Ascend Casino - Minecraft Gambling</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>tailwind.config = {
         theme: {
@@ -178,9 +178,9 @@
                 <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent"></div>
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full max-w-2xl px-8 py-6">
-                        <h2 class="minecraft-font text-5xl mb-4 text-white">Welcome to Phoenix Casino</h2>
+                        <h2 class="minecraft-font text-5xl mb-4 text-white">Welcome to Ashen Ascent Casino</h2>
 
-                        <p class="text-lg mb-6">The most exclusive gambling experience on this Minecraft server. Place
+                        <p class="text-lg mb-6">The most exclusive gambling experience on this Minecraft Server. Place
                             your diamonds and multiply your wealth!</p>
                         <div class="flex items-center text-gray-400 mb-2">
                             <div class="w-5 h-5 flex items-center justify-center mr-2">
@@ -316,7 +316,7 @@
                 <div style="background-image: url('assets/machines/BlackJack.png');" class="h-48 bg-cover bg-center"></div>
                 <div class="p-5">
                     <div class="flex justify-between items-center mb-3">
-                        <h3 class="minecraft-font text-2xl">Blackjack</h3>
+                        <h3 class="minecraft-font text-2xl">Black Jack</h3>
                         <div class="flex items-center">
                             <div class="w-5 h-5 flex items-center justify-center mr-1">
                                 <i class="ri-vip-diamond-line text-blue-300 diamond-icon"></i>
@@ -436,40 +436,24 @@
                     </div>
                     <div>
                         <h3 class="minecraft-font text-xl">Lottery Event (WiP)</h3>
-                        <p class="text-sm text-gray-400">Every Sunday</p>
+                        <p class="text-sm text-gray-400" data-weekday="7" data-nth="1,3" data-hour="20"><span id="lottery-next-date"></span></p>
                     </div>
                 </div>
                 <p class="text-gray-300">Every Sunday we will host a Lottery Event!
                     The Price pool is based on the earnings over the week.<br>Find out more here.</p>
             </div>
-            <!--
             <div class="mb-6 border-b border-gray-700 pb-6">
                 <div class="flex items-center mb-3">
                     <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
                         <i class="ri-trophy-line text-primary"></i>
                     </div>
                     <div>
-                        <h3 class="minecraft-font text-xl">Blackjack-Turnier</h3>
-                        <p class="text-sm text-gray-400">15.07.2025, 19:00 Uhr</p>
+                        <h3 class="minecraft-font text-xl">Poker Night</h3>
+                        <p class="text-sm text-gray-400" data-weekday="7" data-nth="1,3" data-hour="20"><span id="pokernight-next-date"></span></p>
                     </div>
                 </div>
-                <p class="text-gray-300">Melde dich an für unser monatliches Blackjack-Turnier! Der Gewinner erhält
-                    einen exklusiven Preis von 100 Diamanten und einen besonderen Rang auf dem Server.</p>
+                <p class="text-gray-300"></p>
             </div>
-            <div>
-                <div class="flex items-center mb-3">
-                    <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
-                        <i class="ri-vip-diamond-line text-primary"></i>
-                    </div>
-                    <div>
-                        <h3 class="minecraft-font text-xl">Mega-Jackpot</h3>
-                        <p class="text-sm text-gray-400">Jeden Montag, 20:00 Uhr</p>
-                    </div>
-                </div>
-                <p class="text-gray-300">Jeden Montag verlosen wir einen Mega-Jackpot von mindestens 50 Diamanten! Jeder
-                    Einsatz an diesem Tag gibt dir ein Los für die Verlosung am Abend.</p>
-            </div>
-            -->
         </div>
     </section>
     <br><br>
@@ -679,7 +663,7 @@
                         <img src="assets/qr-codes/BlackJack.png"
                              alt="Black Jack QR Code" class="w-32 h-32">
                     </div>
-                    <p class="text-center">Blackjack</p>
+                    <p class="text-center">Black Jack</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="bg-white p-3 rounded-lg mb-3">
@@ -870,6 +854,104 @@
                 target.scrollIntoView({ behavior: "smooth" });
             }
         });
+    });
+
+    // Funktion: n-ter Wochentag im Monat finden
+    function nthWeekday(year, month, weekday, n) {
+        const jsWeekday = (weekday % 7); // 7 (So) -> 0, 1 (Mo) -> 1, etc.
+
+        const firstDay = new Date(year, month, 1);
+        const firstDayWeekday = firstDay.getDay();
+
+        const diff = (7 + jsWeekday - firstDayWeekday) % 7;
+
+        return new Date(year, month, 1 + diff + (n - 1) * 7);
+    }
+
+    // Berechnet nächsten Termin für n-te Wochentage in aktuellem und nächstem Monat
+    function getNextEventDates(now, weekday, ns) {
+        let candidateDates = [];
+
+        ns.forEach(n => {
+            candidateDates.push(nthWeekday(now.getFullYear(), now.getMonth(), weekday, n));
+        });
+
+        let nextMonth = now.getMonth() + 1;
+        let nextYear = now.getFullYear();
+        if (nextMonth > 11) {
+            nextMonth = 0;
+            nextYear++;
+        }
+        ns.forEach(n => {
+            candidateDates.push(nthWeekday(nextYear, nextMonth, weekday, n));
+        });
+
+        candidateDates.sort((a, b) => a - b);
+
+        return candidateDates;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const el = document.getElementById("lottery-next-date");
+        const parent = el.parentElement;
+
+        const weekday = parent?.getAttribute("data-weekday") ?? "1";
+        const weekdayNum = parseInt(weekday, 10);
+
+        const nthAttr = parent?.getAttribute("data-nth") ?? "1,3";
+        const nthDays = nthAttr.split(",").map(x => parseInt(x.trim(), 10));
+
+        const hourAttr = parent?.getAttribute("data-hour") ?? "18";
+        const minuteAttr = parent?.getAttribute("data-minute") ?? "0";
+        const eventHour = parseInt(hourAttr, 10);
+        const eventMinute = parseInt(minuteAttr, 10);
+
+        const now = new Date();
+
+        const nextDates = getNextEventDates(now, weekdayNum, nthDays);
+
+        function findRelevantDate() {
+            for (let i = 0; i < nextDates.length; i++) {
+                const eventDate = nextDates[i];
+
+                // setze direkt die richtige Uhrzeit
+                eventDate.setHours(eventHour, eventMinute, 0, 0);
+
+                const eventEnd = new Date(eventDate.getTime() + 60 * 60 * 1000); // +1h
+
+                if (now < eventDate) {
+                    // noch nicht gestartet → heutiger Termin oder nächster
+                    return { status: "upcoming", date: eventDate };
+                } else if (now >= eventDate && now < eventEnd) {
+                    // läuft gerade
+                    return { status: "ongoing", date: eventDate };
+                }
+                // sonst: Event in der Vergangenheit → nächsten prüfen
+            }
+            return null;
+        }
+
+        const result = findRelevantDate();
+
+        if (result) {
+            const options = {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+            };
+
+            if (result.status === "upcoming") {
+                el.textContent = result.date.toLocaleString("en-US", options);
+            } else if (result.status === "ongoing") {
+                el.textContent = "In progress";
+            }
+        } else {
+            el.textContent = "No upcoming events found.";
+        }
     });
 </script>
 <!--
