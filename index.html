@@ -886,7 +886,6 @@
         return new Date(year, month, 1 + diff + (n - 1) * 7);
     }
 
-    // Berechnet nächsten Termin für n-te Wochentage in aktuellem und nächstem Monat
     function getNextEventDates(now, weekday, ns) {
         let candidateDates = [];
 
@@ -907,6 +906,33 @@
         candidateDates.sort((a, b) => a - b);
 
         return candidateDates;
+    }
+
+    // Hilfsfunktion: erstelle ein Date-Objekt mit der festen Uhrzeit in der festen Zeitzone
+    // Wir brauchen dafür Intl API und bauen die UTC Zeit passend.
+    // Da JS Date nicht direkt Zeitzonen unterstützt, bauen wir die UTC Zeit "manuell" aus dem gewünschten Datum + Uhrzeit + Zeitzone
+    function getEventDateInTimeZone(dateWithoutTime, hour, minute, timeZone) {
+        // Datum in Zeitzone formatieren und UTC Teile auslesen
+        const parts = new Intl.DateTimeFormat('en-US', {
+            timeZone,
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit', second: '2-digit',
+            hour12: false,
+        }).formatToParts(dateWithoutTime);
+
+        // Extrahiere Jahr, Monat, Tag, Stunde, Minute
+        let year, month, day;
+        for (const part of parts) {
+            if (part.type === 'year') year = part.value;
+            else if (part.type === 'month') month = part.value;
+            else if (part.type === 'day') day = part.value;
+        }
+
+        // Baue Datum mit gewünschter Uhrzeit als UTC (ohne Zeitzonenverschiebung)
+        // Achtung: Monat in JS Date ist 0-basiert
+        const utcDate = new Date(Date.UTC(year, month - 1, day, hour, minute, 0));
+
+        return utcDate;
     }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -930,9 +956,28 @@
 
             const nextDates = getNextEventDates(now, weekdayNum, nthDays);
 
-            const result = findRelevantDate(nextDates, now, eventHour, eventMinute);
+            const timeZone = "Europe/Berlin"; // hier definierst du die feste Zeitzone
 
-            if (result) {
+            // Erstelle eventDate mit fester Uhrzeit in fester Zeitzone als UTC Date
+            let foundEvent = null;
+
+            for (const dateWithoutTime of nextDates) {
+                // Erstelle Event Datum mit fester Zeit in fester Zeitzone
+                const eventDate = getEventDateInTimeZone(dateWithoutTime, eventHour, eventMinute, timeZone);
+
+                // Event Endzeit + 1h
+                const eventEnd = new Date(eventDate.getTime() + 60 * 60 * 1000);
+
+                if (now < eventDate) {
+                    foundEvent = { status: "upcoming", date: eventDate };
+                    break;
+                } else if (now >= eventDate && now < eventEnd) {
+                    foundEvent = { status: "ongoing", date: eventDate };
+                    break;
+                }
+            }
+
+            if (foundEvent) {
                 const options = {
                     weekday: "long",
                     day: "numeric",
@@ -940,11 +985,12 @@
                     hour: "2-digit",
                     minute: "2-digit",
                     hour12: false,
+                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone // lokale Zeitzone des Nutzers
                 };
 
-                if (result.status === "upcoming") {
-                    el.textContent = "📅 " + result.date.toLocaleString("en-US", options);
-                } else if (result.status === "ongoing") {
+                if (foundEvent.status === "upcoming") {
+                    el.textContent = "📅 " + foundEvent.date.toLocaleString("en-US", options);
+                } else if (foundEvent.status === "ongoing") {
                     el.textContent = "🔥 In progress";
                 }
             } else {
@@ -952,6 +998,7 @@
             }
         });
     });
+
 
     function findRelevantDate(nextDates, now, eventHour, eventMinute) {
         for (let i = 0; i < nextDates.length; i++) {
