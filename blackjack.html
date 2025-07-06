@@ -195,7 +195,7 @@
                         <div class="grid grid-cols-3 gap-4">
                             <div class="text-center">
                                 <p class="text-gray-400">Left Button</p>
-                                <p class="minecraft-font text-xl machine-total-plays">Submits score and lets the machine play</p>
+                                <p class="minecraft-font text-xl machine-total-plays">Submits score & machine plays (only press ones!)</p>
                             </div>
                             <div class="text-center">
                                 <p class="text-gray-400">Right Button</p>
@@ -208,7 +208,7 @@
                             <br>
                         </div>
                     </div>
-                    <div class="border-t border-gray-700 pt-4">
+                    <div id="payout-ratio" class="border-t border-gray-700 pt-4 mt-8 scroll-mt-72">
                         <h3 class="minecraft-font text-xl mb-3">Payout Ratio</h3>
                         <div class="grid grid-cols-3 gap-4">
                             <div class="text-center">
@@ -374,20 +374,93 @@
             Common Issues & Solutions
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 machine-issues">
+
+            <!-- Score -->
+            <div class="col-span-2">
+                <h4 class="minecraft-font text-2xl mb-2 text-primary">Score</h4>
+            </div>
             <div class="card rounded-lg p-6">
                 <h3 class="minecraft-font text-xl mb-3 flex items-center">
                     <div class="w-6 h-6 flex items-center justify-center mr-2">
                         <i class="ri-error-warning-line text-primary"></i>
                     </div>
-                    Issue Title
+                    I can't score
                 </h3>
-                <p class="text-gray-300 mb-3">Description of the issue...</p>
+                <p class="text-gray-300 mb-3">The score always resets to 0 immediately after a card was drawn</p>
                 <div class="bg-gray-800 rounded-lg p-4">
                     <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
-                    <p class="text-gray-400">How to fix the issue...</p>
+                    <p class="text-gray-400">This can happen if, unfortunately, a new game was started while a backup has been performed. Just inform me asap (@Fire_I3laze in Discord or pn me).</p>
                 </div>
             </div>
-            <!-- More issues will be added dynamically -->
+            <div class="card rounded-lg p-6">
+                <h3 class="minecraft-font text-xl mb-3 flex items-center">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-error-warning-line text-primary"></i>
+                    </div>
+                    Score was incorrectly raised
+                </h3>
+                <p class="text-gray-300 mb-3">After I submitted my score, the machine went playing and suddenly increased my score, causing me to lose</p>
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
+                    <p class="text-gray-400">This only happens if you (or anyone else) accidentally pressed the "submit button" a second time. Then the machine rolls back to the player score and adds the pulled numbers there. If that happens, it is honestly your own fault because it is stated in the rules to only press the button once. But if you report it to me ingame while I am online, I'll mostly pay your bets back, yet your possibly good score will be lost</p>
+                </div>
+            </div>
+
+            <!-- Machine Start -->
+            <div class="col-span-2">
+                <h4 class="minecraft-font text-2xl mt-4 mb-2 text-primary">Machine Start</h4>
+            </div>
+            <div class="card rounded-lg p-6">
+                <h3 class="minecraft-font text-xl mb-3 flex items-center">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-error-warning-line text-primary"></i>
+                    </div>
+                    Game doesn't start
+                </h3>
+                <p class="text-gray-300 mb-3">When I press the right button to start a new game, the machine refuses to start and the interface stays at the previous game states</p>
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
+                    <p class="text-gray-400">Just wait. The machine is still paying out the bets from the previous round. You likely lost to a high bet. If you pay attention you'll likely hear the clock and dropper working. The next round can be started as soon as the noise has been cancelled</p>
+                </div>
+            </div>
+            <div class="card rounded-lg p-6">
+                <h3 class="minecraft-font text-xl mb-3 flex items-center">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-error-warning-line text-primary"></i>
+                    </div>
+                    Machine freezes after start
+                </h3>
+                <p class="text-gray-300 mb-3">When I press the right button to start a new game, the interface lights switch off and stay that way</p>
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
+                    <p class="text-gray-400">Just wait. You've likely put in a huge bet and the machine is counting. Due to limited Minecraft physics, this will take a noticeable time from ~32 Diamonds on. You can always check the bet barrel to see the progress. Once all diamonds are gone, the machine will pull the first card for you and you can go on.</p>
+                </div>
+            </div>
+
+            <!-- Payout -->
+            <div class="col-span-2">
+                <h4 class="minecraft-font text-2xl mt-4 mb-2 text-primary">Payout</h4>
+            </div>
+            <div class="card rounded-lg p-6">
+                <h3 class="minecraft-font text-xl mb-3 flex items-center">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-error-warning-line text-primary"></i>
+                    </div>
+                    Wrong / No Payout
+                </h3>
+                <p class="text-gray-300 mb-3">The machine does not pay out correctly or not at all</p>
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
+                    <p class="text-gray-400">
+                        First check whether the device is actually displaying your expected score.
+                        If that is the case, make sure that you have the
+                        <button id="scrollToRatio" class="text-primary underline cursor-pointer">
+                            actual ratio
+                        </button>
+                        in mind. If that is also the case and you are very sure the output is not matching your input * ratio, either contact me (@Fire_I3laze in Discord or pn me) or feel free to check the Diamond bet stock yourself if you know where it is. If the chest is not empty, I am afraid you are wrong and the machine did pay out correctly. But depending on the amount, I might be open to settle the discrepancy.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
     <!--
@@ -506,4 +579,19 @@
     </section>
 </main>
 </body>
+
+<script>
+    // sanft scrollen und hervorheben
+    document.getElementById("scrollToRatio").addEventListener("click", () => {
+        const target = document.getElementById("payout-ratio");
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Hervorhebung
+        const originalBg = target.style.backgroundColor;
+        target.style.backgroundColor = "rgba(255, 255, 0, 0.1)";
+        setTimeout(() => {
+            target.style.backgroundColor = originalBg;
+        }, 1500);
+    });
+</script>
 </html>
