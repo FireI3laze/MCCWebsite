@@ -8,7 +8,7 @@
     <script>tailwind.config = {
         theme: {
             extend: {
-                colors: {primary: '#4ade80', secondary: '#2563eb'},
+                colors: {primary: '#ef4444', secondary: '#2563eb'},
                 borderRadius: {
                     'none': '0px',
                     'sm': '4px',
@@ -55,14 +55,14 @@
         }
 
         .card:hover {
-            border-color: #4ade80;
-            box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+            border-color: #ef4444;
+            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
             transform: translateY(-3px);
         }
 
         .diamond-icon {
-            color: #4ade80;
-            text-shadow: 0 0 5px rgba(74, 222, 128, 0.5);
+            color: #ef4444;
+            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
         }
 
         .minecraft-button {
@@ -73,7 +73,7 @@
 
         .minecraft-button:hover {
             background-color: #4a5568;
-            border-color: #4ade80;
+            border-color: #ef4444;
         }
 
         .minecraft-button:active {
@@ -81,7 +81,7 @@
         }
 
         .tab-active {
-            background-color: #4ade80;
+            background-color: #ef4444;
             color: #1a1c2a;
         }
 
@@ -90,7 +90,7 @@
             appearance: none;
             width: 20px;
             height: 20px;
-            background: #4ade80;
+            background: #ef4444;
             border-radius: 4px;
             cursor: pointer;
         }
@@ -133,7 +133,7 @@
         }
 
         input:checked + .switch-slider {
-            background-color: #4ade80;
+            background-color: #ef4444;
         }
 
         input:checked + .switch-slider:before {
@@ -142,7 +142,7 @@
 
         .particle {
             position: absolute;
-            background-color: rgba(74, 222, 128, 0.5);
+            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -154,9 +154,9 @@
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <div class="flex items-center">
             <div class="w-10 h-10 flex items-center justify-center mr-2">
-                <i class="ri-cube-line ri-2x diamond-icon"></i>
+                <i class="ri-poker-diamonds-line ri-2x diamond-icon"></i>
             </div>
-            <h1 class="minecraft-font text-3xl text-primary">Diamond Casino</h1>
+            <h1 class="minecraft-font text-3xl text-primary">Ashen Ascent Casino</h1>
         </div>
         <!--
         <div class="flex items-center space-x-4">
@@ -173,16 +173,23 @@
 <main class="container mx-auto px-4 py-8">
     <section class="mb-12">
         <div class="relative rounded-lg overflow-hidden">
-            <div style="background-image: url('assets/Casino.png');"
+            <div style="background-image: url('assets/house/Casino.png');"
                  class="w-full h-96 bg-cover bg-center relative">
                 <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent"></div>
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full max-w-2xl px-8 py-6">
-                        <h2 class="minecraft-font text-5xl mb-4 text-white">Welcome to Diamond Casino</h2>
+                        <h2 class="minecraft-font text-5xl mb-4 text-white">Welcome to Phoenix Casino</h2>
+
                         <p class="text-lg mb-6">The most exclusive gambling experience on our Minecraft server. Place
                             your diamonds and multiply your wealth!</p>
+                        <div class="flex items-center text-gray-400 mb-2">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <p>x:-410 y:65 z:-10</p>
+                        </div>
                         <div class="flex space-x-4">
-                            <button class="minecraft-button bg-primary text-gray-900 font-bold px-6 py-3 !rounded-button">
+                            <button id="scrollToMachines" class="minecraft-button bg-primary text-gray-900 font-bold px-6 py-3 !rounded-button">
                                 View Slot Machines
                             </button>
                             <!--
@@ -196,12 +203,58 @@
             </div>
         </div>
     </section>
-    <section class="mb-12">
+    <!-- HOUSE RULES -->
+    <section class="mb-12 scroll-mt-24" id="house-rules">
+        <h2 class="minecraft-font text-3xl mb-6 flex items-center justify-start">
+            <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-shield-line text-primary"></i>
+            </div>
+            House Rules
+        </h2>
+        <div class="card rounded-lg p-6 w-full">
+            <ul class="list-none text-gray-300 text-left">
+                <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer relative pl-8">
+                    <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
+                    Don't touch/break any Redstone or Block and avoid entering staff only areas.
+                </li>
+                <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer relative pl-8">
+                    <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
+                    Don't use Water Buckets or Wind Charges.
+                </li>
+                <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer relative pl-8">
+                    <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
+                    Don't place any kind of block or item that can trigger upon a Redstone Signal. Even at a spot where it seems safe, this can lead to unexpected results.
+                </li>
+                <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer relative pl-8">
+                    <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
+                    If someone is playing, stay away from the winning outputs.
+                </li>
+                <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer relative pl-8">
+                    <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
+                    Not following the rules of the games, provided in the book next to it or on this website will not lead to a refund or can be considered cheating/exploiting bugs.
+                </li>
+                <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer relative pl-8">
+                    <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
+                    Cheating or exploiting bugs will result in an immediate house ban.
+                </li>
+                <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer relative pl-8">
+                    <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
+                    In the event of disagreements, the decision is always made in favour of the player.
+                </li>
+                <li class="py-2 hover:bg-[#4b1212] cursor-pointer relative pl-8">
+                    <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
+                    The casino reserves the right to change rules of games without prior notice.
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- MACHINES -->
+    <section class="mb-12 scroll-mt-24"  id="machines">
         <h2 class="minecraft-font text-3xl mb-6 flex items-center">
             <div class="w-8 h-8 flex items-center justify-center mr-2">
                 <i class="ri-gamepad-line text-primary"></i>
             </div>
-            Our treasure machines
+            Our Games
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Spielautomat 1 -->
@@ -233,7 +286,7 @@
             -->
             <!-- Spielautomat 2 -->
             <div class="card rounded-lg overflow-hidden">
-                <div style="background-image: url('assets/Roulette.png');"
+                <div style="background-image: url('assets/machines/Roulette.png');"
                      class="h-48 bg-cover bg-center"></div>
                 <div class="p-5">
                     <div class="flex justify-between items-center mb-3">
@@ -260,13 +313,13 @@
             </div>
             <!-- Spielautomat 3 -->
             <div class="card rounded-lg overflow-hidden">
-                <div style="background-image: url('assets/BlackJack.png');" class="h-48 bg-cover bg-center"></div>
+                <div style="background-image: url('assets/machines/BlackJack.png');" class="h-48 bg-cover bg-center"></div>
                 <div class="p-5">
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="minecraft-font text-2xl">Blackjack</h3>
                         <div class="flex items-center">
                             <div class="w-5 h-5 flex items-center justify-center mr-1">
-                                <i class="ri-diamond-line text-blue-300 diamond-icon"></i>
+                                <i class="ri-vip-diamond-line text-blue-300 diamond-icon"></i>
                             </div>
                             <span>0-128</span>
                         </div>
@@ -314,14 +367,14 @@
             -->
             <!-- Spielautomat 5 -->
             <div class="card rounded-lg overflow-hidden">
-                <div style="background-image: url('assets/Poker1.png');"
+                <div style="background-image: url('assets/machines/Poker1.png');"
                      class="h-48 bg-cover bg-center"></div>
                 <div class="p-5">
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="minecraft-font text-2xl">Poker</h3>
                         <div class="flex items-center">
                             <div class="w-5 h-5 flex items-center justify-center mr-1">
-                                <i class="ri-diamond-line text-blue-300 diamond-icon"></i>
+                                <i class="ri-vip-diamond-line text-blue-300 diamond-icon"></i>
                             </div>
                             <span>Set your own limits!</span>
                         </div>
@@ -368,7 +421,59 @@
         </div>
         </div>
     </section>
-    <section class="mb-12">
+    <section class="scroll-mt-24"  id="events">
+        <h2 class="minecraft-font text-3xl mb-6 flex items-center">
+            <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-calendar-line text-primary"></i>
+            </div>
+            Events
+        </h2>
+        <div class="card rounded-lg p-6">
+            <div class="mb-6 border-b border-gray-700 pb-6">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
+                        <i class="ri-gift-line text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="minecraft-font text-xl">Lottery Event (WiP)</h3>
+                        <p class="text-sm text-gray-400">Every Sunday</p>
+                    </div>
+                </div>
+                <p class="text-gray-300">Every Sunday we will host a Lottery Event!
+                    The Price pool is based on the earnings over the week.<br>Find out more here.</p>
+            </div>
+            <!--
+            <div class="mb-6 border-b border-gray-700 pb-6">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
+                        <i class="ri-trophy-line text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="minecraft-font text-xl">Blackjack-Turnier</h3>
+                        <p class="text-sm text-gray-400">15.07.2025, 19:00 Uhr</p>
+                    </div>
+                </div>
+                <p class="text-gray-300">Melde dich an für unser monatliches Blackjack-Turnier! Der Gewinner erhält
+                    einen exklusiven Preis von 100 Diamanten und einen besonderen Rang auf dem Server.</p>
+            </div>
+            <div>
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
+                        <i class="ri-vip-diamond-line text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="minecraft-font text-xl">Mega-Jackpot</h3>
+                        <p class="text-sm text-gray-400">Jeden Montag, 20:00 Uhr</p>
+                    </div>
+                </div>
+                <p class="text-gray-300">Jeden Montag verlosen wir einen Mega-Jackpot von mindestens 50 Diamanten! Jeder
+                    Einsatz an diesem Tag gibt dir ein Los für die Verlosung am Abend.</p>
+            </div>
+            -->
+        </div>
+    </section>
+    <br><br>
+    <section class="mb-12 scroll-mt-24"  id="faq">
         <h2 class="minecraft-font text-3xl mb-6 flex items-center">
             <div class="w-8 h-8 flex items-center justify-center mr-2">
                 <i class="ri-trophy-line text-primary"></i>
@@ -500,8 +605,8 @@
                     </div>
                     How do I bet the diamonds?
                 </h3>
-                <p class="text-gray-300">To stake diamonds, simply place them in the hopper provided on each slot
-                    machine. The number of diamonds inserted determines your stake. Pay attention to the minimum and
+                <p class="text-gray-300">To stake diamonds, simply place them in the labeled Barrel or Chest provided on each
+                    machine. The number of diamonds inserted may determine your stake. Pay attention to the minimum and
                     maximum bets for each machine!</p>
             </div>
             <div class="card rounded-lg p-6">
@@ -511,8 +616,8 @@
                     </div>
                     How do I receive my winnings?
                 </h3>
-                <p class="text-gray-300">Winnings are automatically paid out into the slot machine's output chest. Make
-                    sure you collect your winnings immediately, as full chests cannot hold any more diamonds!</p>
+                <p class="text-gray-300">Winnings are automatically paid out into an output chest or spot. Make
+                    sure you collect your winnings immediately!</p>
             </div>
             <div class="card rounded-lg p-6">
                 <h3 class="minecraft-font text-xl mb-3 flex items-center">
@@ -521,8 +626,8 @@
                     </div>
                     What happens if the server crashes?
                 </h3>
-                <p class="text-gray-300">If the server crashes during a game, your stakes are automatically refunded.
-                    Our redstone mechanisms are designed so that no diamonds can be lost.</p>
+                <p class="text-gray-300">If the server crashes during a game, the game will continue like nothing
+                    happens upon a restart. Avoid leaving machines in the middle of a round!</p>
             </div>
             <div class="card rounded-lg p-6">
                 <h3 class="minecraft-font text-xl mb-3 flex items-center">
@@ -532,16 +637,16 @@
                     Is there a limit for winnings?
                 </h3>
                 <p class="text-gray-300">There is no fixed win limit. However, some machines may have a maximum win per
-                    game. You can find this information in the detailed view of each machine on this website.</p>
+                    game. You can find more information in the detailed view of each machine on this website.</p>
             </div>
         </div>
     </section>
-    <section class="mb-12">
+    <section class="mb-12 scroll-mt-24"  id="qr">
         <h2 class="minecraft-font text-3xl mb-6 flex items-center">
             <div class="w-8 h-8 flex items-center justify-center mr-2">
                 <i class="ri-qr-code-line text-primary"></i>
             </div>
-            QR codes for your Minecraft experience
+            QR codes for your gambling experience
         </h2>
         <div class="card rounded-lg p-6">
             <p class="mb-6">Scan these QR codes in Minecraft to go directly to the corresponding pages. You can also
@@ -549,7 +654,7 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div class="flex flex-col items-center">
                     <div class="bg-white p-3 rounded-lg mb-3">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/diamond-casino"
+                        <img src="assets/qr-codes/index.png"
                              alt="Casino QR Code" class="w-32 h-32">
                     </div>
                     <p class="text-center">Main page</p>
@@ -565,73 +670,24 @@
                 <div class="flex flex-col items-center">
                     <div class="bg-white p-3 rounded-lg mb-3">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/machine.html?id=redstone-roulette"
-                             alt="Redstone Roulette QR Code" class="w-32 h-32">
+                             alt="Roulette QR Code" class="w-32 h-32">
                     </div>
                     <p class="text-center">Roulette</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="bg-white p-3 rounded-lg mb-3">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/machine.html?id=emerald-blackjack"
-                             alt="Emerald Blackjack QR Code" class="w-32 h-32">
+                        <img src="assets/qr-codes/BlackJack.png"
+                             alt="Black Jack QR Code" class="w-32 h-32">
                     </div>
                     <p class="text-center">Blackjack</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="bg-white p-3 rounded-lg mb-3">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/machine.html?id=emerald-blackjack"
-                             alt="Emerald Blackjack QR Code" class="w-32 h-32">
+                             alt="Poker" class="w-32 h-32">
                     </div>
                     <p class="text-center">Poker</p>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <h2 class="minecraft-font text-3xl mb-6 flex items-center">
-            <div class="w-8 h-8 flex items-center justify-center mr-2">
-                <i class="ri-calendar-line text-primary"></i>
-            </div>
-            Aktuelle Events
-        </h2>
-        <div class="card rounded-lg p-6">
-            <div class="mb-6 border-b border-gray-700 pb-6">
-                <div class="flex items-center mb-3">
-                    <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
-                        <i class="ri-gift-line text-primary"></i>
-                    </div>
-                    <div>
-                        <h3 class="minecraft-font text-xl">Doppelte Gewinnchance</h3>
-                        <p class="text-sm text-gray-400">07.07.2025 - 09.07.2025</p>
-                    </div>
-                </div>
-                <p class="text-gray-300">An diesem Wochenende verdoppeln wir die Gewinnchancen an allen Spielautomaten!
-                    Die perfekte Gelegenheit, um deinen Diamantenvorrat aufzustocken.</p>
-            </div>
-            <div class="mb-6 border-b border-gray-700 pb-6">
-                <div class="flex items-center mb-3">
-                    <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
-                        <i class="ri-trophy-line text-primary"></i>
-                    </div>
-                    <div>
-                        <h3 class="minecraft-font text-xl">Blackjack-Turnier</h3>
-                        <p class="text-sm text-gray-400">15.07.2025, 19:00 Uhr</p>
-                    </div>
-                </div>
-                <p class="text-gray-300">Melde dich an für unser monatliches Blackjack-Turnier! Der Gewinner erhält
-                    einen exklusiven Preis von 100 Diamanten und einen besonderen Rang auf dem Server.</p>
-            </div>
-            <div>
-                <div class="flex items-center mb-3">
-                    <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
-                        <i class="ri-vip-diamond-line text-primary"></i>
-                    </div>
-                    <div>
-                        <h3 class="minecraft-font text-xl">Mega-Jackpot</h3>
-                        <p class="text-sm text-gray-400">Jeden Montag, 20:00 Uhr</p>
-                    </div>
-                </div>
-                <p class="text-gray-300">Jeden Montag verlosen wir einen Mega-Jackpot von mindestens 50 Diamanten! Jeder
-                    Einsatz an diesem Tag gibt dir ein Los für die Verlosung am Abend.</p>
             </div>
         </div>
     </section>
@@ -641,8 +697,9 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
                 <h3 class="minecraft-font text-xl mb-4">Diamond Casino</h3>
-                <p class="text-gray-400 mb-4">Das beste Glücksspiel-Erlebnis auf unserem Minecraft-Server. Setze deine
-                    Diamanten ein und vervielfache deinen Reichtum!</p>
+                <p class="text-gray-400 mb-4">The best gambling experience on this Minecraft Server. Put your
+                    diamonds on the table to multiply your wealth!</p>
+                <!--
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-400 hover:text-primary">
                         <div class="w-8 h-8 flex items-center justify-center">
@@ -660,15 +717,16 @@
                         </div>
                     </a>
                 </div>
+                -->
             </div>
             <div>
-                <h3 class="minecraft-font text-xl mb-4">Schnellzugriff</h3>
+                <h3 class="minecraft-font text-xl mb-4">Shortcuts</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-primary">Spielautomaten</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-primary">Bestenliste</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-primary">FAQ</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-primary">QR-Codes</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-primary">Events</a></li>
+                    <li><a href="#house-rules" class="text-gray-400 hover:text-primary">House Rules</a></li>
+                    <li><a href="#machines" class="text-gray-400 hover:text-primary">Machines</a></li>
+                    <li><a href="#events" class="text-gray-400 hover:text-primary">Events</a></li>
+                    <li><a href="#faq" class="text-gray-400 hover:text-primary">FAQ</a></li>
+                    <li><a href="#qr" class="text-gray-400 hover:text-primary">QR-Codes</a></li>
                 </ul>
             </div>
             <div>
@@ -678,7 +736,7 @@
                         <div class="w-5 h-5 flex items-center justify-center mr-2">
                             <i class="ri-server-line text-gray-400"></i>
                         </div>
-                        <span class="text-gray-400">play.diamondcasino.mc</span>
+                        <span class="text-gray-400">play.lakehead.club</span>
                     </li>
                     <li class="flex items-center">
                         <div class="w-5 h-5 flex items-center justify-center mr-2">
@@ -686,20 +744,27 @@
                         </div>
                         <span class="text-gray-400">Version 1.20.4</span>
                     </li>
+                    <!--
                     <li class="flex items-center">
                         <div class="w-5 h-5 flex items-center justify-center mr-2">
                             <i class="ri-user-line text-gray-400"></i>
                         </div>
                         <span class="text-gray-400">42/100 Spieler online</span>
                     </li>
+                    -->
                     <li class="flex items-center">
                         <div class="w-5 h-5 flex items-center justify-center mr-2">
                             <i class="ri-map-pin-line text-gray-400"></i>
                         </div>
-                        <span class="text-gray-400">Casino bei x:250 y:64 z:-120</span>
+                        <span class="text-gray-400">Casino at x:-410 y:65 z:-10</span>
                     </li>
                 </ul>
             </div>
+            <div>
+                <h3 class="minecraft-font text-xl mb-4">Builder</h3>
+                <p class="text-gray-400 mb-4">Fire_I3laze<br>HumanBeing_1</p>
+            </div>
+            <!--
             <div>
                 <h3 class="minecraft-font text-xl mb-4">Newsletter</h3>
                 <p class="text-gray-400 mb-4">Erhalte Updates zu neuen Spielautomaten und Events direkt in deinen
@@ -712,15 +777,18 @@
                     <span class="text-gray-400">Discord-Benachrichtigungen aktivieren</span>
                 </div>
             </div>
+            -->
         </div>
         <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Diamond Casino. Alle Rechte vorbehalten. Nicht mit
                 Mojang verbunden.</p>
+            <!--
             <div class="flex space-x-4">
                 <a href="#" class="text-gray-400 hover:text-primary text-sm">Nutzungsbedingungen</a>
                 <a href="#" class="text-gray-400 hover:text-primary text-sm">Datenschutz</a>
                 <a href="#" class="text-gray-400 hover:text-primary text-sm">Impressum</a>
             </div>
+            -->
         </div>
     </div>
 </footer>
@@ -788,7 +856,23 @@
 // Neue Partikel in Intervallen erstellen
         setInterval(createParticle, 2000);
     });
+    // Scrollen bei Button press
+    document.getElementById("scrollToMachines").addEventListener("click", function () {
+        document.getElementById("machines").scrollIntoView({ behavior: "smooth" });
+    });
+    // smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetID = this.getAttribute("href").substring(1);
+            const target = document.getElementById(targetID);
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    });
 </script>
+<!--
 <script id="newsletter-script">
     document.addEventListener('DOMContentLoaded', function () {
         const newsletterSwitch = document.getElementById('newsletter-switch');
@@ -801,5 +885,6 @@
         });
     });
 </script>
+-->
 </body>
 </html>

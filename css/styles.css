@@ -10,16 +10,16 @@ body {
 
 .minecraft-font {
   font-family: 'Pacifico', cursive;
-  color: #4ade80;
+  color: #ef4444;
   user-select: none;
 }
 
 .diamond-icon {
-  color: #4ade80;
+  color: #ef4444;
 }
 
 .minecraft-button {
-  background-color: #4ade80;
+  background-color: #ef4444;
   color: #121212;
   font-weight: 700;
   border-radius: 8px;
@@ -33,11 +33,11 @@ body {
 }
 
 .minecraft-button:hover {
-  background-color: #22c55e;
+  background-color: #ef4444; /* z.B. Tailwind „red-500“ */
 }
 
 .minecraft-button:active {
-  background-color: #16a34a;
+  background-color: #b91c1c; /* z.B. Tailwind „red-700“ */
 }
 
 .card {
@@ -76,6 +76,10 @@ th {
 
 tbody tr:hover {
   background-color: #374151;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* Responsive grid gaps and spacing are handled by Tailwind */
