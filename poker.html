@@ -168,7 +168,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div class="card rounded-lg overflow-hidden">
                 <div class="machine-image h-96 bg-cover bg-center"
-                     style="background-image: url('assets/machines/BlackJack.png')"></div>
+                     style="background-image: url('assets/machines/Poker1.png')"></div>
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex items-center">
@@ -177,16 +177,15 @@
                             </div>
                             <div>
                                 <h3 class="minecraft-font text-xl">Betting Range</h3>
-                                <p class="text-gray-400 machine-betting-range">0-128 Diamonds</p>
+                                <p class="text-gray-400 machine-betting-range">Set your own limits!</p>
                             </div>
                         </div>
                         <div class="flex items-center">
                             <div class="w-8 h-8 flex items-center justify-center mr-2 bg-primary bg-opacity-20 rounded-full">
-                                <i class="ri-percent-line text-primary"></i>
+                                <i class="ri-ticket-line text-primary text-primary"></i>
                             </div>
                             <div>
-                                <h3 class="minecraft-font text-xl">Win Rate</h3>
-                                <p class="text-gray-400 machine-win-rate">~50%</p>
+                                <h3 class="minecraft-font text-xl">Ticket Required</h3>
                             </div>
                         </div>
                     </div>
@@ -195,35 +194,33 @@
                         <div class="grid grid-cols-3 gap-4">
                             <div class="text-center">
                                 <p class="text-gray-400">Left Button</p>
-                                <p class="minecraft-font text-xl machine-total-plays">Submits score and lets the machine play</p>
+                                <p class="minecraft-font text-xl machine-total-plays">Drops cards to<br>the players seats</p>
                             </div>
                             <div class="text-center">
                                 <p class="text-gray-400">Right Button</p>
-                                <p class="minecraft-font text-xl machine-biggest-win">starts a game<br>pulls a card</p>
+                                <p class="minecraft-font text-xl machine-biggest-win">Drops table cards<br>on the table</p>
                             </div>
                             <div class="text-center">
-                                <p class="text-gray-400">Pay in/out</p>
-                                <p class="minecraft-font text-xl machine-active-players">Barrel (right) for bets<br>Chest (left) for payout</p>
+                                <p class="text-gray-400">Center Button/barrel</p>
+                                <p class="minecraft-font text-xl machine-active-players">Put ticket in barrel<br>Press button to retrieve</p>
                             </div>
                             <br>
                         </div>
                     </div>
                     <div class="border-t border-gray-700 pt-4">
-                        <h3 class="minecraft-font text-xl mb-3">Payout Ratio</h3>
-                        <div class="grid grid-cols-3 gap-4">
-                            <div class="text-center">
-                                <p class="text-gray-400">Win</p>
-                                <p class="minecraft-font text-xl text-amber-400 font-bold">x2</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="text-gray-400">Tie</p>
-                                <p class="minecraft-font text-xl text-gray-400">x1</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="text-gray-400">Loss</p>
-                                <p class="minecraft-font text-xl text-red-500">x0</p>
-                            </div>
-                        </div>
+                        <h3 class="minecraft-font text-xl mb-3">Bets</h3>
+                        <p>
+                            After each round the players enter a bet phase. The player left to the dealer starts with any bet (in round 1 every player has to bet at least 1 diamond). Rotating clockwise, all subsequent players must consider if they
+                            <span class="minecraft-font text-xl text-lime-500 font-bold">call</span>,
+                            <span class="minecraft-font text-xl text-yellow-400 font-extrabold">raise</span> or
+                            <span class="minecraft-font text-xl text-red-600 font-semibold">fold</span>.
+                        </p>
+                            <p>If a player <span class="minecraft-font text-xl text-lime-500 font-bold">calls</span>, that means that they match the current highest bet.</p>
+                            <p>If a player <span class="minecraft-font text-xl text-yellow-400 font-extrabold">raises</span>, then they increased the bet and everyone has to at least <span class="minecraft-font text-xl text-lime-500 font-bold">call</span> or <span class="minecraft-font text-xl text-red-600 font-semibold">fold</span>.</p>
+                            <p>If a player <span class="minecraft-font text-xl text-red-600 font-semibold">folds</span>, they quit that round, lose any chance of winning and all bets they have done.</p>
+                        <p>This continues until all bet an equal amount or everyone except one folds.</p>
+                        <p>The winner of a game receives all bets. Player can agree on bet limits.</p>
+
                     </div>
                 </div>
             </div>
@@ -236,18 +233,26 @@
                         How It Works
                     </h2>
                     <div class="prose prose-invert machine-description">
-                        <p class="text-gray-300">
-                            In this version of Black Jack, the player tries to get as close as possible to a maximum (14) score by drawing cards valued from 1 to 7, without going over that maximum (15). The player always draws first and can take as many cards as they want to improve their total score.
-                        </p>
-                        <p class="text-gray-300">
-                            After the player finishes, the dealer takes their turn, drawing cards with values from 1 to 7 to try and beat the player’s score without exceeding the maximum.
-                        </p>
-                        <p class="text-gray-300">
-                            If the player exceeds the maximum score, they lose immediately.
-                        </p>
-                        <p class="text-gray-300">
-                            At the end, the side with the score closest to the maximum without going over wins. If both have the same score, the result is a tie.
-                        </p>
+                        <ul class="list-none text-gray-300 text-left max-w-3xl mx-auto">
+                            <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer">
+                                <span class="mr-2 text-primary">♦</span>In this version of Poker, every player receives 2 hand cards and up to 3 cards will be put on the table.
+                            </li>
+                            <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer">
+                                <span class="mr-2 text-primary">♦</span>Each player tries to get the strongest card constellation by combining their hand cards with table cards.
+                            </li>
+                            <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer">
+                                <span class="mr-2 text-primary">♦</span>Upon obtaining hand cards and after each card put on the table the players enter a bet phase.
+                            </li>
+                            <li class="py-2 border-b border-gray-700 hover:bg-[#4b1212] cursor-pointer">
+                                <span class="mr-2 text-primary">♦</span>Bets are put in the chest in the center of the table. Each row of the chest has a named paper, representing the rounds.
+                            </li>
+                            <li class="py-2 hover:bg-[#4b1212] cursor-pointer">
+                                <span class="mr-2 text-primary">♦</span>After the last betting phase (4 in total), all players that are still in the game reveal their cards so the winner can be determined.
+                            </li>
+                            <li class="py-2 hover:bg-[#4b1212] cursor-pointer">
+                                <span class="mr-2 text-primary">♦</span>Finally every player puts their cards in the chest next to them and the dealer wipes the table. Then a new card can be started.
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="card rounded-lg p-6">
@@ -272,93 +277,204 @@
         <div>
             <h2 class="minecraft-font text-3xl mb-6 flex items-center">
                 <div class="w-8 h-8 flex items-center justify-center mr-2">
-                    <i class="ri-pie-chart-line text-primary"></i>
+                    <i class="ri-sword-line text-red-500"></i>
                 </div>
-                Probabilities (approximated values)
+                Card Values & Winning Hands
             </h2>
             <div class="flex flex-wrap gap-8">
                 <!-- Win Probabilities -->
                 <div class="card rounded-lg p-6 flex-1 min-w-[300px]">
                     <h4 class="minecraft-font text-lg mb-3 flex items-center">
                         <div class="w-6 h-6 flex items-center justify-center mr-2">
-                            <i class="ri-error-warning-line text-primary"></i>
+                            <i class="ri-treasure-map-line text-red-500"></i>
                         </div>
-                        Win Probabilities
+                        Table of values (desc.)
                     </h4>
                     <table class="w-full text-left border-collapse">
                         <thead>
                         <tr class="border-b border-gray-600">
-                            <th class="py-2">Player Score</th>
-                            <th class="py-2">Win %</th>
-                            <th class="py-2">Tie %</th>
-                            <th class="py-2">Dealer Win %</th>
+                            <th class="py-2">Mineral</th>
+                            <th class="py-2">Value</th>
+                            <th class="py-2">suit</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="border-b border-gray-700">
-                            <td class="py-2">9</td>
-                            <td class="py-2">7.2%</td>
-                            <td class="py-2">4.4%</td>
-                            <td class="py-2">88.4%</td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE2.png" alt="Netherite" class="inline w-5 h-5 mr-1">
+                                Netherite
+                            </td>
+                            <td class="py-2">Ace</td>
+                            <td class="py-2">Ingot</td>
                         </tr>
                         <tr class="border-b border-gray-700">
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Diamond_JE2_BE2.png" alt="Diamond" class="inline w-5 h-5 mr-1">
+                                Diamond
+                            </td>
+                            <td class="py-2">King</td>
+                            <td class="py-2">Gem</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Emerald_JE2_BE2.png" alt="Emerald" class="inline w-5 h-5 mr-1">
+                                Emerald
+                            </td>
+                            <td class="py-2">Queen</td>
+                            <td class="py-2">Gem</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Gold_Ingot_JE4_BE2.png" alt="Gold" class="inline w-5 h-5 mr-1">
+                                Gold
+                            </td>
+                            <td class="py-2">Jack</td>
+                            <td class="py-2">Ingot</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Iron_Ingot_JE3_BE2.png" alt="Iron" class="inline w-5 h-5 mr-1">
+                                Iron
+                            </td>
                             <td class="py-2">10</td>
-                            <td class="py-2">14.5%</td>
-                            <td class="py-2">5.9%</td>
-                            <td class="py-2">79.6%</td>
+                            <td class="py-2">Ingot</td>
                         </tr>
-                        <tr class="border-b border-gray-700">
-                            <td class="py-2">11</td>
-                            <td class="py-2">28.3%</td>
-                            <td class="py-2">7.6%</td>
-                            <td class="py-2">64.1%</td>
+                        <tr class="border-b border-gray-600">
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Lapis_Lazuli_JE2_BE2.png" alt="Lapis" class="inline w-5 h-5 mr-1">
+                                Lapis
+                            </td>
+                            <td class="py-2">9</td>
+                            <td class="py-2">Gem</td>
                         </tr>
-                        <tr class="border-b border-gray-700">
-                            <td class="py-2">12</td>
-                            <td class="py-2">50.0%</td>
-                            <td class="py-2">8.8%</td>
-                            <td class="py-2">41.2%</td>
-                        </tr>
-                        <tr class="border-b border-gray-700">
-                            <td class="py-2">13</td>
-                            <td class="py-2">76.4%</td>
-                            <td class="py-2">9.5%</td>
-                            <td class="py-2">14.1%</td>
+                        <tr class="border-b border-gray-600">
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Redstone_Dust_JE2_BE2.png" alt="Redstone" class="inline w-5 h-5 mr-1">
+                                Redstone
+                            </td>
+                            <td class="py-2">8</td>
+                            <td class="py-2">Gem</td>
                         </tr>
                         <tr>
-                            <td class="py-2">14</td>
-                            <td class="py-2">95.0%</td>
-                            <td class="py-2">5.0%</td>
-                            <td class="py-2">0.0%</td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Copper_Ingot_JE2_BE1.png" alt="Copper" class="inline w-5 h-5 mr-1">
+                                Copper
+                            </td>
+                            <td class="py-2">7</td>
+                            <td class="py-2">Ingot</td>
                         </tr>
                         </tbody>
                     </table>
-                    <p class="text-gray-300 mb-6"><br>
-                        <i class="ri-information-2-line"></i> Calculated with ChatGPT</p>
+                    <p class="text-gray-300 mb-3"><br>
+                        <i class="ri-information-2-line"></i> Each card has a 12.5% chance to drop</p>
                 </div>
 
                 <!-- Bust Probabilities -->
                 <div class="card rounded-lg p-6 flex-1 min-w-[200px]">
                     <h4 class="minecraft-font text-lg mb-3 flex items-center">
                         <div class="w-6 h-6 flex items-center justify-center mr-2">
-                            <i class="ri-error-warning-line text-primary"></i>
+                            <i class="ri-trophy-line text-red-500"></i>
                         </div>
-                        Bust Probabilities
+                        Viable Combinations (desc.)
                     </h4>
                     <table class="w-full text-left border-collapse">
                         <thead>
                         <tr class="border-b border-gray-600">
-                            <th class="py-2">Player Score</th>
-                            <th class="py-2">Bust %</th>
+                            <th class="py-2">Combinations</th>
+                            <th class="py-2">Example</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="border-b border-gray-700"><td class="py-2">8</td><td class="py-2">14.28%</td></tr>
-                        <tr class="border-b border-gray-700"><td class="py-2">9</td><td class="py-2">28.57%</td></tr>
-                        <tr class="border-b border-gray-700"><td class="py-2">10</td><td class="py-2">42.85%</td></tr>
-                        <tr class="border-b border-gray-700"><td class="py-2">11</td><td class="py-2">57.14%</td></tr>
-                        <tr class="border-b border-gray-700"><td class="py-2">12</td><td class="py-2">71.42%</td></tr>
-                        <tr><td class="py-2">13</td><td class="py-2">85.71%</td></tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">
+                                1. Five of a kind
+                            </td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE2.png" alt="Netherite" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE2.png" alt="Netherite" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE2.png" alt="Netherite" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE2.png" alt="Netherite" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE2.png" alt="Netherite" class="inline w-5 h-5 mr-1">
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">1. Four of a kind</td><td class="py-2">
+                                <img src="https://minecraft.wiki/images/Diamond_JE2_BE2.png" alt="Diamond" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Diamond_JE2_BE2.png" alt="Diamond" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Diamond_JE2_BE2.png" alt="Diamond" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Diamond_JE2_BE2.png" alt="Diamond" class="inline w-5 h-5 mr-1">
+                                <i class="ri-question-mark mr-2"></i>
+                        </td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">Full House (three of a kind + two of a kind)</td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Emerald_JE2_BE2.png" alt="Emerald" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Emerald_JE2_BE2.png" alt="Emerald" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Emerald_JE2_BE2.png" alt="Emerald" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Gold_Ingot_JE4_BE2.png" alt="Gold" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Gold_Ingot_JE4_BE2.png" alt="Gold" class="inline w-5 h-5 mr-1">
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">Flush (4 different Gems/Ingots)</td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE2.png" alt="Netherite" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Gold_Ingot_JE4_BE2.png" alt="Gold" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Iron_Ingot_JE3_BE2.png" alt="Iron" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Copper_Ingot_JE2_BE1.png" alt="Copper" class="inline w-5 h-5 mr-1">
+                                <i class="ri-question-mark mr-2"></i>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">Straight (4 Minerals desc.)</td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Diamond_JE2_BE2.png" alt="Diamond" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Emerald_JE2_BE2.png" alt="Emerald" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Gold_Ingot_JE4_BE2.png" alt="Gold" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Iron_Ingot_JE3_BE2.png" alt="Iron" class="inline w-5 h-5 mr-1">
+                                <i class="ri-question-mark mr-2"></i>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">Three of a kind</td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Iron_Ingot_JE3_BE2.png" alt="Iron" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Iron_Ingot_JE3_BE2.png" alt="Iron" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Iron_Ingot_JE3_BE2.png" alt="Iron" class="inline w-5 h-5 mr-1">
+                                <i class="ri-question-mark mr-2"></i>
+                                <i class="ri-question-mark mr-2"></i>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">2x two of a kind</td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Lapis_Lazuli_JE2_BE2.png" alt="Lapis" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Lapis_Lazuli_JE2_BE2.png" alt="Lapis" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Redstone_Dust_JE2_BE2.png" alt="Redstone" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Redstone_Dust_JE2_BE2.png" alt="Redstone" class="inline w-5 h-5 mr-1">
+                                <i class="ri-question-mark mr-2"></i>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2">Two of a kind</td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Copper_Ingot_JE2_BE1.png" alt="Copper" class="inline w-5 h-5 mr-1">
+                                <img src="https://minecraft.wiki/images/Copper_Ingot_JE2_BE1.png" alt="Copper" class="inline w-5 h-5 mr-1">
+                                <i class="ri-question-mark mr-2"></i>
+                                <i class="ri-question-mark mr-2"></i>
+                                <i class="ri-question-mark mr-2"></i>
+                            </td>
+                        </tr>
+                            <td class="py-2">Highest value</td>
+                            <td class="py-2">
+                                <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE2.png" alt="Netherite" class="inline w-5 h-5 mr-1">
+                                <i class="ri-question-mark mr-2"></i>
+                                <i class="ri-question-mark mr-2"></i>
+                                <i class="ri-question-mark mr-2"></i>
+                                <i class="ri-question-mark mr-2"></i>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -379,15 +495,29 @@
                     <div class="w-6 h-6 flex items-center justify-center mr-2">
                         <i class="ri-error-warning-line text-primary"></i>
                     </div>
-                    Issue Title
+                    No reaction
                 </h3>
-                <p class="text-gray-300 mb-3">Description of the issue...</p>
+                <p class="text-gray-300 mb-3">Nothing happens upon button press</p>
                 <div class="bg-gray-800 rounded-lg p-4">
                     <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
-                    <p class="text-gray-400">How to fix the issue...</p>
+                    <p class="text-gray-400">In order to play on a table, one person has to host the game. For that, they put a Casino Ticket in the barrel. This activates the table
+                    Casino Tickets can be obtained at the entrance on the right side (labeled). Make sure you claim it back once done playing.</p>
                 </div>
             </div>
-            <!-- More issues will be added dynamically -->
+            <div class="card rounded-lg p-6">
+                <h3 class="minecraft-font text-xl mb-3 flex items-center">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-error-warning-line text-primary"></i>
+                    </div>
+                    3 Player
+                </h3>
+                <p class="text-gray-300 mb-3">The table only allows to swap between 2 and 4 player</p>
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
+                    <p class="text-gray-400">This is true and a flaw in the redstone design. If you want to play as 3 either contact (@Fire_I3laze) if online or go to the second table.
+                    There you can toggle between 2, 3 and 4 player.</p>
+                </div>
+            </div>
         </div>
     </section>
     <!--

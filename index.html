@@ -1008,7 +1008,7 @@
                 };
 
                 if (foundEvent.status === "upcoming") {
-                    el.textContent = "📅 " + foundEvent.date.toLocaleString("en-US", options);
+                    el.textContent = "📅 " + foundEvent.date.toLocaleString("en-US", options) + " (Placeholders)";
                 } else if (foundEvent.status === "ongoing") {
                     el.textContent = "🔥 In progress";
                 }
