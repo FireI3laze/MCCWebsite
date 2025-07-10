@@ -92,7 +92,7 @@
                             </a>
                         </div>
                         <div class="flex space-x-4">
-                            <button id="scrollToMachines" class="minecraft-button bg-primary text-gray-900 font-bold px-6 py-3 !rounded-button">
+                            <button id="scrollToGames" class="minecraft-button bg-primary text-gray-900 font-bold px-6 py-3 !rounded-button">
                                 View Machines
                             </button>
                             <!--
@@ -730,6 +730,7 @@
 </footer>
 <script src="js/globalTime.js"></script>
 <script src="js/scroll.js"></script>
+<script src="js/buttons.js"></script>
 <script id="particles-script">
     document.addEventListener('DOMContentLoaded', function () {
         const container = document.getElementById('particles-container');
@@ -773,7 +774,7 @@
         setInterval(createParticle, 2000);
     });
     // Scrollen bei Button press
-    document.getElementById("scrollToMachines").addEventListener("click", function () {
+    document.getElementById("scrollToGames").addEventListener("click", function () {
         document.getElementById("machines").scrollIntoView({ behavior: "smooth" });
     });
 

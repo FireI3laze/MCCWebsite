@@ -78,6 +78,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const now = new Date();
 
+        // ⭐ NEU: Prüfen ob nur Uhrzeit gewünscht
+        if (weekday === "null" || nthAttr === "null") {
+            // ⭐ Uhrzeit-String erzeugen
+            const timeStr = `${String(eventHour).padStart(2, '0')}:${String(eventMinute).padStart(2, '0')}`;
+            el.textContent = `${timeStr}`;
+            return; // ⭐ fertig, nicht weitermachen
+        }
+
         const nextDates = getNextEventDates(now, weekdayNum, nthDays);
 
         const timeZone = "Europe/Berlin"; // hier definierst du die feste Zeitzone

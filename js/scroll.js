@@ -20,6 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Scrollen bei URL-Parameter ?scrollToEvents=true
     const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("scrollToGames") === "true") {
+        const el = document.getElementById("machines"); // 'machines' ist dein Games-Bereich?
+        if (el) {
+            // Zuerst zum Seitenanfang (optional), dann scrollen mit Delay
+            window.scrollTo(0, 0);
+            setTimeout(() => smoothScrollWithOffset(el), 100);
+        }
+    }
+
     if (urlParams.get("scrollToEvents") === "true") {
         const el = document.getElementById("events");
         if (el) {

@@ -50,7 +50,7 @@
 <header class="border-b border-gray-800 bg-opacity-90 bg-gray-900 sticky top-0 z-50">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <div class="flex items-center">
-            <a href="index.html" class="minecraft-button px-3 py-2 !rounded-button flex items-center mr-4">
+            <a href="index.html?scrollToGames=true" class="minecraft-button px-3 py-2 !rounded-button flex items-center mr-4">
                 <div class="w-5 h-5 flex items-center justify-center mr-2">
                     <i class="ri-arrow-left-line"></i>
                 </div>
@@ -61,7 +61,7 @@
     </div>
 </header>
 <main class="container mx-auto px-4 py-8">
-    <section class="mb-12">
+    <section id="how-it-works" class="mb-12">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div class="card rounded-lg overflow-hidden">
                 <div class="machine-image h-96 bg-cover bg-center"
@@ -184,7 +184,7 @@
             </div>
         </div>
     </section>
-    <section class="mb-12">
+    <section id="card-values-and-winning-hands" class="mb-12">
         <div>
             <h2 class="minecraft-font text-3xl mb-6 flex items-center">
                 <div class="w-8 h-8 flex items-center justify-center mr-2">
@@ -392,7 +392,7 @@
         </div>
     </section>
 
-    <section class="mb-12">
+    <section id="issues-and-solutions" class="mb-12">
         <h2 class="minecraft-font text-3xl mb-6 flex items-center">
             <div class="w-8 h-8 flex items-center justify-center mr-2">
                 <i class="ri-error-warning-line text-primary"></i>
@@ -527,4 +527,119 @@
     </section>
 </main>
 </body>
+<footer class="bg-gray-900 border-t border-gray-800 mt-12 py-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="minecraft-font text-xl mb-4">Ashen Ascent Casino</h3>
+                <p class="text-gray-400 mb-4">The best gambling experience on this Minecraft Server. Put your
+                    diamonds on the table to multiply your wealth!</p>
+                <div class="flex space-x-4">
+                    <a href="https://www.youtube.com/@AshenAscentCasino"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="text-gray-400 hover:text-primary">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <i class="ri-youtube-fill ri-lg"></i>
+                        </div>
+                    </a>
+                    <a href="https://discord.com/users/foldingfan"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="text-gray-400 hover:text-primary">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <i class="ri-discord-fill ri-lg"></i>
+                        </div>
+                    </a><!--
+                    <a href="#" class="text-gray-400 hover:text-primary">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <i class="ri-twitter-x-fill ri-lg"></i>
+                        </div>
+                    </a>-->
+                    <a href="https://github.com/FireI3laze/MCCWebsite"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="text-gray-400 hover:text-primary">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <i class="ri-github-fill ri-lg"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="minecraft-font text-xl mb-4">Shortcuts</h3>
+                <ul class="space-y-2">
+                    <li><a href="#how-it-works" class="text-gray-400 hover:text-primary">How it works</a></li>
+                    <li><a href="#card-values-and-winning-hands" class="text-gray-400 hover:text-primary">Card Values & Winning Hands</a></li>
+                    <li><a href="#issues-and-solutions" class="text-gray-400 hover:text-primary">Issues & Solutions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="minecraft-font text-xl mb-4">Server-Info</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <div class="w-5 h-5 flex items-center justify-center mr-2">
+                            <i class="ri-server-line text-gray-400"></i>
+                        </div>
+                        <span class="text-gray-400">play.lakehead.club</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-5 h-5 flex items-center justify-center mr-2">
+                            <i class="ri-game-line text-gray-400"></i>
+                        </div>
+                        <span class="text-gray-400">Version 1.20.4</span>
+                    </li>
+                    <!--
+                    <li class="flex items-center">
+                        <div class="w-5 h-5 flex items-center justify-center mr-2">
+                            <i class="ri-user-line text-gray-400"></i>
+                        </div>
+                        <span class="text-gray-400">42/100 Spieler online</span>
+                    </li>
+                    -->
+                    <li class="flex items-center">
+                        <div class="w-5 h-5 flex items-center justify-center mr-2">
+                            <i class="ri-map-pin-line text-gray-400"></i>
+                        </div>
+                        <span class="text-gray-400">Casino at <a href="https://map.lakehead.club/?worldname=world&mapname=surface&zoom=6&x=-470&y=64&z=-10"
+                                                                 class="hover:underline"
+                                                                 target="_blank"
+                                                                 rel="noopener noreferrer">
+                                x:-410 y:65 z:-10
+                            </a></span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="minecraft-font text-xl mb-4">Builder</h3>
+                <p class="text-gray-400 mb-4">Fire_I3laze<br>HumanBeing_1</p>
+            </div>
+            <!--
+            <div>
+                <h3 class="minecraft-font text-xl mb-4">Newsletter</h3>
+                <p class="text-gray-400 mb-4">Erhalte Updates zu neuen Spielautomaten und Events direkt in deinen
+                    Discord-DMs!</p>
+                <div class="flex">
+                    <label class="custom-switch mr-3">
+                        <input type="checkbox" id="newsletter-switch">
+                        <span class="switch-slider"></span>
+                    </label>
+                    <span class="text-gray-400">Discord-Benachrichtigungen aktivieren</span>
+                </div>
+            </div>
+            -->
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Ashen Ascent Casino. All rights reserved. Not affiliated with
+                Mojang.</p>
+            <!--
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-primary text-sm">Nutzungsbedingungen</a>
+                <a href="#" class="text-gray-400 hover:text-primary text-sm">Datenschutz</a>
+                <a href="#" class="text-gray-400 hover:text-primary text-sm">Impressum</a>
+            </div>
+            -->
+        </div>
+    </div>
+</footer>
 </html>
