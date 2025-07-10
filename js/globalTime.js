@@ -80,10 +80,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // ⭐ NEU: Prüfen ob nur Uhrzeit gewünscht
         if (weekday === "null" || nthAttr === "null") {
-            // ⭐ Uhrzeit-String erzeugen
-            const timeStr = `${String(eventHour).padStart(2, '0')}:${String(eventMinute).padStart(2, '0')}`;
-            el.textContent = `${timeStr}`;
-            return; // ⭐ fertig, nicht weitermachen
+            const now = new Date();
+
+            const eventDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), eventHour, eventMinute);
+
+            const options = {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            };
+
+            el.textContent = eventDate.toLocaleTimeString("en-US", options);
+            return;
         }
 
         const nextDates = getNextEventDates(now, weekdayNum, nthDays);
