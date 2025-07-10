@@ -33,21 +33,6 @@
         el.classList.add("flash");
     }
 
-    function toggleBothDetails() {
-        const howItWorksContent = document.querySelector('#how-it-works .content');
-        const pricePoolContent = document.querySelector('#price-pool .content');
-        if (!howItWorksContent || !pricePoolContent) return;
-
-        const isHidden = howItWorksContent.classList.contains('hidden');
-        if (isHidden) {
-            howItWorksContent.classList.remove('hidden');
-            pricePoolContent.classList.remove('hidden');
-        } else {
-            howItWorksContent.classList.add('hidden');
-            pricePoolContent.classList.add('hidden');
-        }
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
         const flipCards = document.querySelectorAll('.flipCard');
 
@@ -67,201 +52,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <style>
         :where([class^="ri-"])::before {
             content: "\f3c2";
         }
-
         body {
             background-color: #1a1c2a;
             color: #e2e8f0;
             font-family: 'Inter', sans-serif;
-            background-image: url('https://readdy.ai/api/search-image?query=dark%20minecraft%20texture%20background%20with%20subtle%20stone%20and%20obsidian%20patterns%2C%20high%20quality%20texture%2C%20seamless%20pattern%2C%20dark%20gray%20and%20black%20colors%2C%20minimal%20noise%2C%20suitable%20for%20website%20background&width=1920&height=1080&seq=bg123&orientation=landscape');
+            background-image: url('assets/styles/Background.jpg');
             background-attachment: fixed;
             background-size: cover;
         }
-
-        .minecraft-font {
-            font-family: 'VT323', monospace;
-        }
-
-        .card {
-            background-color: rgba(30, 32, 46, 0.85);
-            backdrop-filter: blur(5px);
-            border: 2px solid #2d3748;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: #ef4444;
-            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .diamond-icon {
-            color: #ef4444;
-            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-        }
-
-        .minecraft-button {
-            background-color: #3a3f5a;
-            border: 2px solid #2d3748;
-            transition: all 0.2s ease;
-        }
-
-        .minecraft-button:hover {
-            background-color: #4a5568;
-            border-color: #ef4444;
-        }
-
-        .minecraft-button:active {
-            transform: scale(0.98);
-        }
-
-        .tab-active {
-            background-color: #ef4444;
-            color: #1a1c2a;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #ef4444;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .custom-switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-
-        .custom-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .switch-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #3a3f5a;
-            transition: .4s;
-            border-radius: 24px;
-        }
-
-        .switch-slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .switch-slider {
-            background-color: #ef4444;
-        }
-
-        input:checked + .switch-slider:before {
-            transform: translateX(26px);
-        }
-
-        .particle {
-            position: absolute;
-            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        @keyframes flash {
-            0%   { background-color: rgba(255, 255, 0, 0.2); }
-            100% { background-color: transparent; }
-        }
-
-        .flash {
-            animation: flash 1s ease;
-        }
-
-        .perspective {
-            perspective: 1000px;
-        }
-
-        .flip-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s ease;
-            cursor: pointer;
-        }
-
-        .flip-front, .flip-back {
-            backface-visibility: hidden;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            border-radius: 8px; /* falls du runde Ecken möchtest */
-        }
-
-        .flip-back {
-            transform: rotateY(180deg);
-            background-color: #1a1c2a;
-            /* optional: andere Styles */
-        }
-
-        /* Scrollbar für WebKit-Browser (Chrome, Safari, Edge Chromium) */
-        .scrollbar {
-            overflow-y: auto; /* Scrollen erlauben */
-            padding: 60px 0;
-        }
-
-        /* Track (Hintergrund) */
-        .scrollbar::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        /* Scrollbar-Schieber */
-        .scrollbar::-webkit-scrollbar-thumb {
-            background-color: #ef4444; /* Tailwind Rot (red-500) */
-            border-radius: 10px;
-            border: 2px solid transparent; /* Abstand zum Rand */
-            background-clip: content-box;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Hover Effekt */
-        .scrollbar::-webkit-scrollbar-thumb:hover {
-            background-color: #b91c1c; /* dunkleres Rot (red-700) */
-        }
-
-        /* Scrollbar Track (Hintergrund) */
-        .scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05); /* leicht transparent */
-            border-radius: 10px;
-        }
-
-        /* Firefox */
-        .scrollbar {
-            scrollbar-width: thin;
-            scrollbar-color: #ef4444 transparent;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-
     </style>
 </head>
 <body>
@@ -269,7 +72,7 @@
     <header class="border-b border-gray-800 bg-opacity-90 bg-gray-900 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <a href="index.html" class="minecraft-button px-3 py-2 !rounded-button flex items-center mr-4">
+                <a href="index.html?scrollToEvents=true" class="minecraft-button px-3 py-2 !rounded-button flex items-center mr-4">
                     <div class="w-5 h-5 flex items-center justify-center mr-2">
                         <i class="ri-arrow-left-line"></i>
                     </div>
@@ -613,209 +416,10 @@
                 </div>
             </div>
         </section>
-        <section class="mb-12">
-            <h2 class="minecraft-font text-4xl mb-6 flex items-center">
-                <div class="w-8 h-8 flex items-center justify-center mr-2">
-                    <i class="ri-calendar-line text-primary"></i>
-                </div>
-                Upcoming Events
-            </h2>
-
-            <div class="space-y-8">
-                <!-- Event 1 -->
-                <div class="card rounded-lg p-6 border border-gray-700 bg-gray-800">
-                    <div class="flex items-start mb-4">
-                        <div class="w-12 h-12 flex items-center justify-center mr-4 bg-primary bg-opacity-20 rounded-full">
-                            <i class="ri-gift-line text-primary text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="minecraft-font text-2xl mb-1">Lottery Event</h3>
-                            <p class="text-sm text-gray-400" data-weekday="7" data-nth="1" data-hour="18" data-minute="0"><span></span></p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">
-                        Every first Sunday we host a Lottery Event! The prize pool is based on the week’s earnings.
-                        Buy your tickets and try your luck. Winners announced live!
-                    </p>
-                </div>
-
-                <!-- Event 2 -->
-                <div class="card rounded-lg p-6 border border-gray-700 bg-gray-800">
-                    <div class="flex items-start mb-4">
-                        <div class="w-12 h-12 flex items-center justify-center mr-4 bg-primary bg-opacity-20 rounded-full">
-                            <i class="ri-coins-line text-primary"></i>
-                        </div>
-                        <div>
-                            <h3 class="minecraft-font text-2xl mb-1">Poker Night</h3>
-
-                            <p class="text-sm text-gray-400" data-weekday="5" data-nth="2,4" data-hour="20" data-minute="0"><span></span></p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">
-                        Join us for a thrilling Poker Night with free tables and competitive players.
-                        Bluff, bet, and win big — or just enjoy the atmosphere!
-                    </p>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="card rounded-lg p-6 border border-gray-700 bg-gray-800">
-                    <div class="flex items-start mb-4">
-                        <div class="w-12 h-12 flex items-center justify-center mr-4 bg-primary bg-opacity-20 rounded-full">
-                            <i class="ri-boxing-fill text-primary text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="minecraft-font text-2xl mb-1">Fighting Tournament</h3>
-                            <p class="text-sm text-gray-400" data-weekday="6" data-nth="3" data-hour="14" data-minute="0"><span></span></p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">
-                        Compete in our Fighting Tournament and prove your strength!
-                        Fight for glory and prizes — or place your bets on your favourite fighters.
-                    </p>
-                </div>
-            </div>
-        </section>
-        <script>
-            // Funktion: n-ter Wochentag im Monat finden
-            function nthWeekday(year, month, weekday, n) {
-                const jsWeekday = (weekday % 7); // 7 (So) -> 0, 1 (Mo) -> 1, etc.
-
-                const firstDay = new Date(year, month, 1);
-                const firstDayWeekday = firstDay.getDay();
-
-                const diff = (7 + jsWeekday - firstDayWeekday) % 7;
-
-                return new Date(year, month, 1 + diff + (n - 1) * 7);
-            }
-
-            function getNextEventDates(now, weekday, ns) {
-                let candidateDates = [];
-
-                ns.forEach(n => {
-                    candidateDates.push(nthWeekday(now.getFullYear(), now.getMonth(), weekday, n));
-                });
-
-                let nextMonth = now.getMonth() + 1;
-                let nextYear = now.getFullYear();
-                if (nextMonth > 11) {
-                    nextMonth = 0;
-                    nextYear++;
-                }
-                ns.forEach(n => {
-                    candidateDates.push(nthWeekday(nextYear, nextMonth, weekday, n));
-                });
-
-                candidateDates.sort((a, b) => a - b);
-
-                return candidateDates;
-            }
-
-            // Hilfsfunktion: erstelle ein Date-Objekt mit der festen Uhrzeit in der festen Zeitzone
-            // Wir brauchen dafür Intl API und bauen die UTC Zeit passend.
-            // Da JS Date nicht direkt Zeitzonen unterstützt, bauen wir die UTC Zeit "manuell" aus dem gewünschten Datum + Uhrzeit + Zeitzone
-            function getEventDateInTimeZone(dateWithoutTime, hour, minute, timeZone) {
-                // Datum in Zeitzone formatieren und UTC Teile auslesen
-                const parts = new Intl.DateTimeFormat('en-US', {
-                    timeZone,
-                    year: 'numeric', month: '2-digit', day: '2-digit',
-                    hour: '2-digit', minute: '2-digit', second: '2-digit',
-                    hour12: false,
-                }).formatToParts(dateWithoutTime);
-
-                // Extrahiere Jahr, Monat, Tag, Stunde, Minute
-                let year, month, day;
-                for (const part of parts) {
-                    if (part.type === 'year') year = part.value;
-                    else if (part.type === 'month') month = part.value;
-                    else if (part.type === 'day') day = part.value;
-                }
-
-                // Baue Datum mit gewünschter Uhrzeit als UTC (ohne Zeitzonenverschiebung)
-                // Achtung: Monat in JS Date ist 0-basiert
-                const utcDate = new Date(Date.UTC(year, month - 1, day, hour, minute, 0));
-
-                return utcDate;
-            }
-
-            document.addEventListener("DOMContentLoaded", () => {
-                const elements = document.querySelectorAll("[data-weekday]");
-
-                elements.forEach(el => {
-                    const parent = el;
-
-                    const weekday = parent?.getAttribute("data-weekday") ?? "1";
-                    const weekdayNum = parseInt(weekday, 10);
-
-                    const nthAttr = parent?.getAttribute("data-nth") ?? "1,3";
-                    const nthDays = nthAttr.split(",").map(x => parseInt(x.trim(), 10));
-
-                    const hourAttr = parent?.getAttribute("data-hour") ?? "18";
-                    const minuteAttr = parent?.getAttribute("data-minute") ?? "0";
-                    const eventHour = parseInt(hourAttr, 10);
-                    const eventMinute = parseInt(minuteAttr, 10);
-
-                    const now = new Date();
-
-                    const nextDates = getNextEventDates(now, weekdayNum, nthDays);
-
-                    const timeZone = "Europe/Berlin"; // hier definierst du die feste Zeitzone
-
-                    // Erstelle eventDate mit fester Uhrzeit in fester Zeitzone als UTC Date
-                    let foundEvent = null;
-
-                    for (const dateWithoutTime of nextDates) {
-                        // Erstelle Event Datum mit fester Zeit in fester Zeitzone
-                        const eventDate = getEventDateInTimeZone(dateWithoutTime, eventHour, eventMinute, timeZone);
-
-                        // Event Endzeit + 1h
-                        const eventEnd = new Date(eventDate.getTime() + 60 * 60 * 1000);
-
-                        if (now < eventDate) {
-                            foundEvent = { status: "upcoming", date: eventDate };
-                            break;
-                        } else if (now >= eventDate && now < eventEnd) {
-                            foundEvent = { status: "ongoing", date: eventDate };
-                            break;
-                        }
-                    }
-
-                    const originalText = el.textContent.trim();
-
-                    if (foundEvent) {
-                        const options = {
-                            weekday: "long",
-                            day: "numeric",
-                            month: "long",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            hour12: false,
-                            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone // lokale Zeitzone des Nutzers
-                        };
-
-                        if (foundEvent.status === "upcoming") {
-                            el.textContent = "📅 " + foundEvent.date.toLocaleString("en-US", options) + " " + originalText;
-                        } else if (foundEvent.status === "ongoing") {
-                            el.textContent = "🎉 Right now";
-                        }
-                    } else {
-                        el.textContent = "No upcoming events found.";
-                    }
-                });
-            });
-
-            document.addEventListener("DOMContentLoaded", () => {
-                const hash = window.location.hash;
-                if (hash) {
-                    const el = document.querySelector(hash);
-                    if (el) {
-                        setTimeout(() => {
-                            const y = el.getBoundingClientRect().top + window.scrollY - 175;
-                            window.scrollTo({ top: y, behavior: "smooth" });
-                        }, 100);
-                    }
-                }
-            });
-        </script>
     </main>
 </body>
+
+<script src="js/buttons.js"></script>
+<script src="js/globalTime.js"></script>
+<script src="js/scroll.js"></script>
 

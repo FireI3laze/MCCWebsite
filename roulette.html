@@ -29,6 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <style>
         :where([class^="ri-"])::before {
             content: "\f3c2";
@@ -41,110 +42,6 @@
             background-image: url('https://readdy.ai/api/search-image?query=dark%20minecraft%20texture%20background%20with%20subtle%20stone%20and%20obsidian%20patterns%2C%20high%20quality%20texture%2C%20seamless%20pattern%2C%20dark%20gray%20and%20black%20colors%2C%20minimal%20noise%2C%20suitable%20for%20website%20background&width=1920&height=1080&seq=bg123&orientation=landscape');
             background-attachment: fixed;
             background-size: cover;
-        }
-
-        .minecraft-font {
-            font-family: 'VT323', monospace;
-        }
-
-        .card {
-            background-color: rgba(30, 32, 46, 0.85);
-            backdrop-filter: blur(5px);
-            border: 2px solid #2d3748;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: #ef4444;
-            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .diamond-icon {
-            color: #ef4444;
-            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-        }
-
-        .minecraft-button {
-            background-color: #3a3f5a;
-            border: 2px solid #2d3748;
-            transition: all 0.2s ease;
-        }
-
-        .minecraft-button:hover {
-            background-color: #4a5568;
-            border-color: #ef4444;
-        }
-
-        .minecraft-button:active {
-            transform: scale(0.98);
-        }
-
-        .tab-active {
-            background-color: #ef4444;
-            color: #1a1c2a;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #ef4444;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .custom-switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-
-        .custom-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .switch-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #3a3f5a;
-            transition: .4s;
-            border-radius: 24px;
-        }
-
-        .switch-slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .switch-slider {
-            background-color: #ef4444;
-        }
-
-        input:checked + .switch-slider:before {
-            transform: translateX(26px);
-        }
-
-        .particle {
-            position: absolute;
-            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
         }
     </style>
 </head>

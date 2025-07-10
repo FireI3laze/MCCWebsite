@@ -29,6 +29,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+
     <style>
         :where([class^="ri-"])::before {
             content: "\f3c2";
@@ -38,113 +40,9 @@
             background-color: #1a1c2a;
             color: #e2e8f0;
             font-family: 'Inter', sans-serif;
-            background-image: url('https://readdy.ai/api/search-image?query=dark%20minecraft%20texture%20background%20with%20subtle%20stone%20and%20obsidian%20patterns%2C%20high%20quality%20texture%2C%20seamless%20pattern%2C%20dark%20gray%20and%20black%20colors%2C%20minimal%20noise%2C%20suitable%20for%20website%20background&width=1920&height=1080&seq=bg123&orientation=landscape');
+            background-image: url('assets/styles/Background.jpg');
             background-attachment: fixed;
             background-size: cover;
-        }
-
-        .minecraft-font {
-            font-family: 'VT323', monospace;
-        }
-
-        .card {
-            background-color: rgba(30, 32, 46, 0.85);
-            backdrop-filter: blur(5px);
-            border: 2px solid #2d3748;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: #ef4444;
-            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .diamond-icon {
-            color: #ef4444;
-            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-        }
-
-        .minecraft-button {
-            background-color: #3a3f5a;
-            border: 2px solid #2d3748;
-            transition: all 0.2s ease;
-        }
-
-        .minecraft-button:hover {
-            background-color: #4a5568;
-            border-color: #ef4444;
-        }
-
-        .minecraft-button:active {
-            transform: scale(0.98);
-        }
-
-        .tab-active {
-            background-color: #ef4444;
-            color: #1a1c2a;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #ef4444;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .custom-switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-
-        .custom-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .switch-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #3a3f5a;
-            transition: .4s;
-            border-radius: 24px;
-        }
-
-        .switch-slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .switch-slider {
-            background-color: #ef4444;
-        }
-
-        input:checked + .switch-slider:before {
-            transform: translateX(26px);
-        }
-
-        .particle {
-            position: absolute;
-            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
         }
     </style>
 </head>
@@ -450,7 +348,7 @@
                     The Price pool is based on the earnings over the week.<br>Click to find out more.</p>
             </a>
 
-            <a href="events.html#lottery" class="block mb-6 border-b border-gray-700 pb-6 hover:bg-gray-800 transition">
+            <a href="events.html#poker" class="block mb-6 border-b border-gray-700 pb-6 hover:bg-gray-800 transition">
                 <div class="flex items-center mb-3">
                     <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
                         <i class="ri-coins-line text-primary"></i>
@@ -830,28 +728,8 @@
         </div>
     </div>
 </footer>
-<script id="login-script">
-    document.addEventListener('DOMContentLoaded', function () {
-        const loginButton = document.getElementById('login-button');
-        loginButton.addEventListener('click', function () {
-// In einer echten Implementierung würde hier die Discord OAuth Integration stattfinden
-            alert('Discord-Login wird simuliert. In einer echten Implementierung würdest du zur Discord-Authentifizierung weitergeleitet werden.');
-// Simuliere eingeloggten Zustand
-            loginButton.innerHTML = `
-<div class="w-5 h-5 flex items-center justify-center mr-2">
-<i class="ri-user-line"></i>
-</div>
-<span>MinecraftUser123</span>
-`;
-// Aktiviere Like-Buttons
-            const likeButtons = document.querySelectorAll('.like-button');
-            likeButtons.forEach(button => {
-                button.classList.remove('opacity-50', 'cursor-not-allowed');
-                button.classList.add('cursor-pointer');
-            });
-        });
-    });
-</script>
+<script src="js/globalTime.js"></script>
+<script src="js/scroll.js"></script>
 <script id="particles-script">
     document.addEventListener('DOMContentLoaded', function () {
         const container = document.getElementById('particles-container');
@@ -898,141 +776,26 @@
     document.getElementById("scrollToMachines").addEventListener("click", function () {
         document.getElementById("machines").scrollIntoView({ behavior: "smooth" });
     });
-    // smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const targetID = this.getAttribute("href").substring(1);
-            const target = document.getElementById(targetID);
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
-            }
-        });
-    });
-
-    // Funktion: n-ter Wochentag im Monat finden
-    function nthWeekday(year, month, weekday, n) {
-        const jsWeekday = (weekday % 7); // 7 (So) -> 0, 1 (Mo) -> 1, etc.
-
-        const firstDay = new Date(year, month, 1);
-        const firstDayWeekday = firstDay.getDay();
-
-        const diff = (7 + jsWeekday - firstDayWeekday) % 7;
-
-        return new Date(year, month, 1 + diff + (n - 1) * 7);
-    }
-
-    function getNextEventDates(now, weekday, ns) {
-        let candidateDates = [];
-
-        ns.forEach(n => {
-            candidateDates.push(nthWeekday(now.getFullYear(), now.getMonth(), weekday, n));
-        });
-
-        let nextMonth = now.getMonth() + 1;
-        let nextYear = now.getFullYear();
-        if (nextMonth > 11) {
-            nextMonth = 0;
-            nextYear++;
-        }
-        ns.forEach(n => {
-            candidateDates.push(nthWeekday(nextYear, nextMonth, weekday, n));
-        });
-
-        candidateDates.sort((a, b) => a - b);
-
-        return candidateDates;
-    }
-
-    // Hilfsfunktion: erstelle ein Date-Objekt mit der festen Uhrzeit in der festen Zeitzone
-    // Wir brauchen dafür Intl API und bauen die UTC Zeit passend.
-    // Da JS Date nicht direkt Zeitzonen unterstützt, bauen wir die UTC Zeit "manuell" aus dem gewünschten Datum + Uhrzeit + Zeitzone
-    function getEventDateInTimeZone(dateWithoutTime, hour, minute, timeZone) {
-        // Datum in Zeitzone formatieren und UTC Teile auslesen
-        const parts = new Intl.DateTimeFormat('en-US', {
-            timeZone,
-            year: 'numeric', month: '2-digit', day: '2-digit',
-            hour: '2-digit', minute: '2-digit', second: '2-digit',
-            hour12: false,
-        }).formatToParts(dateWithoutTime);
-
-        // Extrahiere Jahr, Monat, Tag, Stunde, Minute
-        let year, month, day;
-        for (const part of parts) {
-            if (part.type === 'year') year = part.value;
-            else if (part.type === 'month') month = part.value;
-            else if (part.type === 'day') day = part.value;
-        }
-
-        // Baue Datum mit gewünschter Uhrzeit als UTC (ohne Zeitzonenverschiebung)
-        // Achtung: Monat in JS Date ist 0-basiert
-        const utcDate = new Date(Date.UTC(year, month - 1, day, hour, minute, 0));
-
-        return utcDate;
-    }
 
     document.addEventListener("DOMContentLoaded", () => {
-        const elements = document.querySelectorAll("[data-weekday]");
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("scrollToEvents") === "true") {
+            const el = document.getElementById("events");
+            if (el) {
+                // Ganz nach oben, damit kein Sprung passiert
+                window.scrollTo(0, 0);
 
-        elements.forEach(el => {
-            const parent = el;
+                // Header-Höhe berechnen
+                const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+                const extraOffset = 20;
 
-            const weekday = parent?.getAttribute("data-weekday") ?? "1";
-            const weekdayNum = parseInt(weekday, 10);
-
-            const nthAttr = parent?.getAttribute("data-nth") ?? "1,3";
-            const nthDays = nthAttr.split(",").map(x => parseInt(x.trim(), 10));
-
-            const hourAttr = parent?.getAttribute("data-hour") ?? "18";
-            const minuteAttr = parent?.getAttribute("data-minute") ?? "0";
-            const eventHour = parseInt(hourAttr, 10);
-            const eventMinute = parseInt(minuteAttr, 10);
-
-            const now = new Date();
-
-            const nextDates = getNextEventDates(now, weekdayNum, nthDays);
-
-            const timeZone = "Europe/Berlin"; // hier definierst du die feste Zeitzone
-
-            // Erstelle eventDate mit fester Uhrzeit in fester Zeitzone als UTC Date
-            let foundEvent = null;
-
-            for (const dateWithoutTime of nextDates) {
-                // Erstelle Event Datum mit fester Zeit in fester Zeitzone
-                const eventDate = getEventDateInTimeZone(dateWithoutTime, eventHour, eventMinute, timeZone);
-
-                // Event Endzeit + 1h
-                const eventEnd = new Date(eventDate.getTime() + 60 * 60 * 1000);
-
-                if (now < eventDate) {
-                    foundEvent = { status: "upcoming", date: eventDate };
-                    break;
-                } else if (now >= eventDate && now < eventEnd) {
-                    foundEvent = { status: "ongoing", date: eventDate };
-                    break;
-                }
+                // Verzögertes Scrollen mit smooth
+                setTimeout(() => {
+                    const y = el.getBoundingClientRect().top + window.scrollY - headerHeight - extraOffset;
+                    window.scrollTo({top: y, behavior: "smooth"});
+                }, 100);
             }
-
-            if (foundEvent) {
-                const options = {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "long",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: false,
-                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone // lokale Zeitzone des Nutzers
-                };
-
-                if (foundEvent.status === "upcoming") {
-                    el.textContent = "📅 " + foundEvent.date.toLocaleString("en-US", options) + " (Placeholders)";
-                } else if (foundEvent.status === "ongoing") {
-                    el.textContent = "🎉 Right now";
-                }
-            } else {
-                el.textContent = "No upcoming events found.";
-            }
-        });
+        }
     });
 </script>
 <!--
