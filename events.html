@@ -38,7 +38,10 @@
 
         flipCards.forEach(card => {
             let flipped = false;
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (event) => {
+                event.preventDefault();  // verhindert z.B. Link-Navigation
+                event.stopPropagation(); // verhindert Event-Bubbling
+
                 flipped = !flipped;
                 card.style.transform = flipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
             });
