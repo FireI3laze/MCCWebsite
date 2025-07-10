@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashen Ascend Casino - Minecraft Gambling</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = {
+        theme: {
+            extend: {
+                colors: {primary: '#ef4444', secondary: '#2563eb'},
+                borderRadius: {
+                    'none': '0px',
+                    'sm': '4px',
+                    DEFAULT: '8px',
+                    'md': '12px',
+                    'lg': '16px',
+                    'xl': '20px',
+                    '2xl': '24px',
+                    '3xl': '32px',
+                    'full': '9999px',
+                    'button': '8px'
+                }
+            }
+        }
+    }
+    function highlightPriceDistribution() {
+        const el = document.getElementById("price-distribution");
+        if (!el) return;
+        el.classList.remove("flash"); // reset, falls schon aktiv
+        void el.offsetWidth; // reflow zum Neustarten der Animation
+        el.classList.add("flash");
+    }
+
+    function toggleBothDetails() {
+        const howItWorksContent = document.querySelector('#how-it-works .content');
+        const pricePoolContent = document.querySelector('#price-pool .content');
+        if (!howItWorksContent || !pricePoolContent) return;
+
+        const isHidden = howItWorksContent.classList.contains('hidden');
+        if (isHidden) {
+            howItWorksContent.classList.remove('hidden');
+            pricePoolContent.classList.remove('hidden');
+        } else {
+            howItWorksContent.classList.add('hidden');
+            pricePoolContent.classList.add('hidden');
+        }
+    }
+
+
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            background-color: #1a1c2a;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            background-image: url('https://readdy.ai/api/search-image?query=dark%20minecraft%20texture%20background%20with%20subtle%20stone%20and%20obsidian%20patterns%2C%20high%20quality%20texture%2C%20seamless%20pattern%2C%20dark%20gray%20and%20black%20colors%2C%20minimal%20noise%2C%20suitable%20for%20website%20background&width=1920&height=1080&seq=bg123&orientation=landscape');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .minecraft-font {
+            font-family: 'VT323', monospace;
+        }
+
+        .card {
+            background-color: rgba(30, 32, 46, 0.85);
+            backdrop-filter: blur(5px);
+            border: 2px solid #2d3748;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #ef4444;
+            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .diamond-icon {
+            color: #ef4444;
+            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
+        }
+
+        .minecraft-button {
+            background-color: #3a3f5a;
+            border: 2px solid #2d3748;
+            transition: all 0.2s ease;
+        }
+
+        .minecraft-button:hover {
+            background-color: #4a5568;
+            border-color: #ef4444;
+        }
+
+        .minecraft-button:active {
+            transform: scale(0.98);
+        }
+
+        .tab-active {
+            background-color: #ef4444;
+            color: #1a1c2a;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #ef4444;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #3a3f5a;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .switch-slider {
+            background-color: #ef4444;
+        }
+
+        input:checked + .switch-slider:before {
+            transform: translateX(26px);
+        }
+
+        .particle {
+            position: absolute;
+            text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        @keyframes flash {
+            0%   { background-color: rgba(255, 255, 0, 0.2); }
+            100% { background-color: transparent; }
+        }
+
+        .flash {
+            animation: flash 1s ease;
+        }
+    </style>
+</head>
+
+<main class="container mx-auto px-4 py-8">
+    <section class="mb-12">
+        <div class="relative rounded-lg overflow-hidden">
+            <div style="background-image: url('assets/house/Casino.png');"
+                 class="w-full h-96 bg-cover bg-center relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent"></div>
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full max-w-2xl px-8 py-6">
+                        <h2 class="minecraft-font text-5xl mb-4 text-white">Monthly Free Lottery</h2>
+
+                        <p class="text-lg mb-1" data-weekday="7" data-nth="1" data-hour="18" data-minute="0"></p>
+                        <div>
+                            <ul class="list-none text-gray-400 text-left text-sm">
+                                <li class="py-1.5 relative pl-3">
+                                    <p>
+                                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-green-300 text-base">
+                                            <i class="ri-check-line"></i>
+                                        </span>
+                                        <span class="ml-7">Completely free</span>
+                                    </p>
+                                </li>
+                                <li class="py-1.5 relative pl-3">
+                                    <p>
+                                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-green-300 text-base">
+                                            <i class="ri-check-line"></i>
+                                        </span>
+                                        <span class="ml-7">In the Casino</span>
+                                    </p>
+                                </li>
+                                <li class="py-1.5 relative pl-3">
+                                    <p>
+                                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-green-300 text-base">
+                                            <i class="ri-check-line"></i>
+                                        </span>
+                                        <span class="ml-7">Chance to win Diamonds</span>
+                                    </p>
+                                </li>
+                                <li class="py-1.5 relative pl-3">
+                                    <p>
+                                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-pink-300 text-base">
+                                            <i class="ri-heart-line 10"></i>
+                                        </span>
+                                        <span class="ml-7">We Await You</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mb-12">
+        <div>
+            <h2 id="details-toggle" class="minecraft-font text-3xl mb-6 flex items-center cursor-pointer select-none" onclick="toggleBothDetails()">
+                <div class="w-8 h-8 flex items-center justify-center mr-2">
+                    <i class="ri-list-check text-primary"></i>
+                </div>
+                Details
+            </h2>
+            <div class="flex flex-wrap gap-8">
+                <!-- Win Probabilities -->
+                <div id="how-it-works" class="card rounded-lg p-6 flex-1 min-w-[300px]">
+                    <h4 class="minecraft-font text-lg mb-3 flex items-center">
+                        <div class="w-6 h-6 flex items-center justify-center mr-2">
+                            <i class="ri-treasure-map-line text-red-500"></i>
+                        </div>
+                        How it works
+                    </h4>
+                    <div class="content prose prose-invert machine-description">
+                        <ul class="list-none text-gray-300 text-left max-w-3xl mx-auto">
+                            <li class="py-2 border-b border-gray-700">
+                                <span class="mr-2 text-primary">♦</span>24 hours before the events starts, Player can come and claim exactly one free lottery ticket.
+                            </li>
+                            <li class="py-2 border-b border-gray-700">
+                                <span class="mr-2 text-primary">♦</span>You'll need that ticket to be able to claim your rewards, so keep it save.
+                            </li>
+                            <li class="py-2 border-b border-gray-700">
+                                <span class="mr-2 text-primary">♦</span>At the above mentioned time (8pm UTC) the event starts and the machine will draw out 3 random winner.
+                            </li>
+                            <li class="py-2 border-b border-gray-700">
+                                <span class="mr-2 text-primary">♦</span>The first announced player is 🥇, the second announced player is 🥈 and the third announced player is 🥉
+                            <li class="py-2 cursor-pointer" onclick="highlightPriceDistribution()">
+                                <span class="mr-2 text-primary">♦</span>
+                                All players receive their diamonds corresponding to the <strong>price distribution</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bust Probabilities -->
+                <div id="price-pool" class="card rounded-lg p-6 flex-1 min-w-[200px]">
+                    <h4 class="minecraft-font text-lg mb-3 flex items-center">
+                        <div class="w-6 h-6 flex items-center justify-center mr-2">
+                            <i class="ri-coin-line text-red-500"></i>
+                        </div>
+                        Price Pool
+                    </h4>
+                    <div class="content prose prose-invert machine-description">
+                        <ul class="list-none text-gray-300 text-left max-w-3xl mx-auto">
+                            <li class="py-2 border-b border-gray-700">
+                                <span class="mr-2 text-primary">♦</span>The price pool corresponds to 75% of the profit.
+                            </li>
+                            <li class="py-2 border-b border-gray-700">
+                                <span class="mr-2 text-primary">♦</span>Profit includes the total gains less all costs (maintenance costs, expansion costs, transfer costs).
+                            </li>
+                            <li id="price-distribution" class="py-2">
+                                <span class="mr-2 text-primary">♦</span>
+                                Price Distribution:
+                                <span class="text-yellow-300">🥇 50%</span>,
+                                <span class="text-gray-200">🥈 30%</span>,
+                                <span class="text-orange-300">🥉 20%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mb-12">
+        <h2 class="minecraft-font text-4xl mb-6 flex items-center">
+            <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-calendar-line text-primary"></i>
+            </div>
+            Upcoming Events
+        </h2>
+
+        <div class="space-y-8">
+            <!-- Event 1 -->
+            <div class="card rounded-lg p-6 border border-gray-700 bg-gray-800">
+                <div class="flex items-start mb-4">
+                    <div class="w-12 h-12 flex items-center justify-center mr-4 bg-primary bg-opacity-20 rounded-full">
+                        <i class="ri-gift-line text-primary text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="minecraft-font text-2xl mb-1">Lottery Event</h3>
+                        <p class="text-sm text-gray-400" data-weekday="7" data-nth="1" data-hour="18" data-minute="0"><span></span></p>
+                    </div>
+                </div>
+                <p class="text-gray-300">
+                    Every first Sunday we host a Lottery Event! The prize pool is based on the week’s earnings.
+                    Buy your tickets and try your luck. Winners announced live!
+                </p>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="card rounded-lg p-6 border border-gray-700 bg-gray-800">
+                <div class="flex items-start mb-4">
+                    <div class="w-12 h-12 flex items-center justify-center mr-4 bg-primary bg-opacity-20 rounded-full">
+                        <i class="ri-coins-line text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="minecraft-font text-2xl mb-1">Poker Night</h3>
+
+                        <p class="text-sm text-gray-400" data-weekday="5" data-nth="2,4" data-hour="20" data-minute="0"><span></span></p>
+                    </div>
+                </div>
+                <p class="text-gray-300">
+                    Join us for a thrilling Poker Night with free tables and competitive players.
+                    Bluff, bet, and win big — or just enjoy the atmosphere!
+                </p>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="card rounded-lg p-6 border border-gray-700 bg-gray-800">
+                <div class="flex items-start mb-4">
+                    <div class="w-12 h-12 flex items-center justify-center mr-4 bg-primary bg-opacity-20 rounded-full">
+                        <i class="ri-boxing-fill text-primary text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="minecraft-font text-2xl mb-1">Fighting Tournament</h3>
+                        <p class="text-sm text-gray-400" data-weekday="6" data-nth="3" data-hour="14" data-minute="0"><span></span></p>
+                    </div>
+                </div>
+                <p class="text-gray-300">
+                    Compete in our Fighting Tournament and prove your strength!
+                    Fight for glory and prizes — or place your bets on your favourite fighters.
+                </p>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Funktion: n-ter Wochentag im Monat finden
+        function nthWeekday(year, month, weekday, n) {
+            const jsWeekday = (weekday % 7); // 7 (So) -> 0, 1 (Mo) -> 1, etc.
+
+            const firstDay = new Date(year, month, 1);
+            const firstDayWeekday = firstDay.getDay();
+
+            const diff = (7 + jsWeekday - firstDayWeekday) % 7;
+
+            return new Date(year, month, 1 + diff + (n - 1) * 7);
+        }
+
+        function getNextEventDates(now, weekday, ns) {
+            let candidateDates = [];
+
+            ns.forEach(n => {
+                candidateDates.push(nthWeekday(now.getFullYear(), now.getMonth(), weekday, n));
+            });
+
+            let nextMonth = now.getMonth() + 1;
+            let nextYear = now.getFullYear();
+            if (nextMonth > 11) {
+                nextMonth = 0;
+                nextYear++;
+            }
+            ns.forEach(n => {
+                candidateDates.push(nthWeekday(nextYear, nextMonth, weekday, n));
+            });
+
+            candidateDates.sort((a, b) => a - b);
+
+            return candidateDates;
+        }
+
+        // Hilfsfunktion: erstelle ein Date-Objekt mit der festen Uhrzeit in der festen Zeitzone
+        // Wir brauchen dafür Intl API und bauen die UTC Zeit passend.
+        // Da JS Date nicht direkt Zeitzonen unterstützt, bauen wir die UTC Zeit "manuell" aus dem gewünschten Datum + Uhrzeit + Zeitzone
+        function getEventDateInTimeZone(dateWithoutTime, hour, minute, timeZone) {
+            // Datum in Zeitzone formatieren und UTC Teile auslesen
+            const parts = new Intl.DateTimeFormat('en-US', {
+                timeZone,
+                year: 'numeric', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                hour12: false,
+            }).formatToParts(dateWithoutTime);
+
+            // Extrahiere Jahr, Monat, Tag, Stunde, Minute
+            let year, month, day;
+            for (const part of parts) {
+                if (part.type === 'year') year = part.value;
+                else if (part.type === 'month') month = part.value;
+                else if (part.type === 'day') day = part.value;
+            }
+
+            // Baue Datum mit gewünschter Uhrzeit als UTC (ohne Zeitzonenverschiebung)
+            // Achtung: Monat in JS Date ist 0-basiert
+            const utcDate = new Date(Date.UTC(year, month - 1, day, hour, minute, 0));
+
+            return utcDate;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll("[data-weekday]");
+
+            elements.forEach(el => {
+                const parent = el;
+
+                const weekday = parent?.getAttribute("data-weekday") ?? "1";
+                const weekdayNum = parseInt(weekday, 10);
+
+                const nthAttr = parent?.getAttribute("data-nth") ?? "1,3";
+                const nthDays = nthAttr.split(",").map(x => parseInt(x.trim(), 10));
+
+                const hourAttr = parent?.getAttribute("data-hour") ?? "18";
+                const minuteAttr = parent?.getAttribute("data-minute") ?? "0";
+                const eventHour = parseInt(hourAttr, 10);
+                const eventMinute = parseInt(minuteAttr, 10);
+
+                const now = new Date();
+
+                const nextDates = getNextEventDates(now, weekdayNum, nthDays);
+
+                const timeZone = "Europe/Berlin"; // hier definierst du die feste Zeitzone
+
+                // Erstelle eventDate mit fester Uhrzeit in fester Zeitzone als UTC Date
+                let foundEvent = null;
+
+                for (const dateWithoutTime of nextDates) {
+                    // Erstelle Event Datum mit fester Zeit in fester Zeitzone
+                    const eventDate = getEventDateInTimeZone(dateWithoutTime, eventHour, eventMinute, timeZone);
+
+                    // Event Endzeit + 1h
+                    const eventEnd = new Date(eventDate.getTime() + 60 * 60 * 1000);
+
+                    if (now < eventDate) {
+                        foundEvent = { status: "upcoming", date: eventDate };
+                        break;
+                    } else if (now >= eventDate && now < eventEnd) {
+                        foundEvent = { status: "ongoing", date: eventDate };
+                        break;
+                    }
+                }
+
+                if (foundEvent) {
+                    const options = {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: false,
+                        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone // lokale Zeitzone des Nutzers
+                    };
+
+                    if (foundEvent.status === "upcoming") {
+                        el.textContent = "📅 " + foundEvent.date.toLocaleString("en-US", options) + " (Placeholders)";
+                    } else if (foundEvent.status === "ongoing") {
+                        el.textContent = "🎉 Right now";
+                    }
+                } else {
+                    el.textContent = "No upcoming events found.";
+                }
+            });
+        });
+    </script>
+</main>
