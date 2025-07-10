@@ -82,18 +82,22 @@ document.addEventListener("DOMContentLoaded", () => {
         if (weekday === "null" || nthAttr === "null") {
             const now = new Date();
 
-            const eventDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), eventHour, eventMinute);
+            const timeZone = "Europe/Berlin"; // deine feste Veranstaltungszeitzone
+
+            // nimm heute, aber „übersetzt“ in Europe/Berlin
+            const eventDate = getEventDateInTimeZone(now, eventHour, eventMinute, timeZone);
 
             const options = {
                 hour: "2-digit",
                 minute: "2-digit",
                 hour12: false,
-                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone // lokale Zeitzone des Betrachters
             };
 
             el.textContent = eventDate.toLocaleTimeString("en-US", options);
             return;
         }
+
 
         const nextDates = getNextEventDates(now, weekdayNum, nthDays);
 
