@@ -152,6 +152,16 @@ input:checked + .switch-slider:before {
   /* optional: andere Styles */
 }
 
+.front {
+  backface-visibility: hidden;
+}
+
+.back {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+
 /* Scrollbar für WebKit-Browser (Chrome, Safari, Edge Chromium) */
 .scrollbar {
   overflow-y: auto; /* Scrollen erlauben */
