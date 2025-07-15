@@ -87,6 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // nimm heute, aber „übersetzt“ in Europe/Berlin
             const eventDate = getEventDateInTimeZone(now, eventHour, eventMinute, timeZone);
 
+            const originalText = el.textContent
+
             const options = {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -94,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone // lokale Zeitzone des Betrachters
             };
 
-            el.textContent = eventDate.toLocaleTimeString("en-US", options);
+            el.textContent = eventDate.toLocaleTimeString("en-US", options) + " " + originalText;
             return;
         }
 
@@ -102,6 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const nextDates = getNextEventDates(now, weekdayNum, nthDays);
 
         const timeZone = "Europe/Berlin"; // hier definierst du die feste Zeitzone
+
+        const originalText = el.textContent
 
         // Erstelle eventDate mit fester Uhrzeit in fester Zeitzone als UTC Date
         let foundEvent = null;
@@ -134,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             if (foundEvent.status === "upcoming") {
-                el.textContent = "📅 " + foundEvent.date.toLocaleString("en-US", options) + " (Placeholders)";
+                el.textContent = "📅 " + foundEvent.date.toLocaleString("en-US", options) + " " + originalText;
             } else if (foundEvent.status === "ongoing") {
                 el.textContent = "🎉 Right now";
             }
