@@ -92,7 +92,7 @@
                         <div class="grid grid-cols-3 gap-4">
                             <div class="text-center">
                                 <p class="text-gray-400">Left Button</p>
-                                <p class="minecraft-font text-xl machine-total-plays">Submits score & machine plays (only press ones!)</p>
+                                <p class="minecraft-font text-xl machine-total-plays">Submits score & machine plays</p>
                             </div>
                             <div class="text-center">
                                 <p class="text-gray-400">Right Button</p>
@@ -132,20 +132,26 @@
                         </div>
                         How It Works
                     </h2>
-                    <div class="prose prose-invert machine-description">
-                        <p class="text-gray-300">
-                            In this version of Black Jack, the player tries to get as close as possible to a maximum (14) score by drawing cards valued from 1 to 7, without going over that maximum (15). The player always draws first and can take as many cards as they want to improve their total score.
-                        </p>
-                        <p class="text-gray-300">
-                            After the player finishes, the dealer takes their turn, drawing cards with values from 1 to 7 to try and beat the player’s score without exceeding the maximum.
-                        </p>
-                        <p class="text-gray-300">
-                            If the player exceeds the maximum score, they lose immediately.
-                        </p>
-                        <p class="text-gray-300">
-                            At the end, the side with the score closest to the maximum without going over wins. If both have the same score, the result is a tie.
-                        </p>
-                    </div>
+                    <ul class="list-none text-gray-300 text-left max-w-3xl mx-auto">
+                        <li class="py-2 border-b border-gray-700">
+                            <span class="mr-2 text-primary">♦</span>The player try to get a score as close as possible to a maximum (14).
+                        </li>
+                        <li class="py-2 border-b border-gray-700">
+                            <span class="mr-2 text-primary">♦</span>You raise your score by pulling cards in a range of 1 to 7.
+                        </li>
+                        <li class="py-2 border-b border-gray-700">
+                            <span class="mr-2 text-primary">♦</span>But be careful! If you hit a score of 15 or higher, you automatically lose.
+                        </li>
+                        <li class="py-2 border-b border-gray-700">
+                            <span class="mr-2 text-primary">♦</span>The player goes first and can submit their score whenever they want to.
+                        </li>
+                        <li class="py-2 border-b border-gray-700">
+                            <span class="mr-2 text-primary">♦</span>Then the House takes their turn and  tries to beat the player, following the same rules.
+                        </li>
+                        <li class="py-2">
+                            <span class="mr-2 text-primary">♦</span>Whoever ends up having the highest score without exceeding 15, wins.
+                        </li>
+                    </ul>
                 </div>
                 <div class="card rounded-lg p-6">
                     <h2 class="minecraft-font text-2xl mb-4 flex items-center">
