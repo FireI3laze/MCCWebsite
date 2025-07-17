@@ -239,7 +239,7 @@ html {
   width: 250px; /* deutlich kleiner */
   height: 150px;
   padding: 12px 16px !important;
-  z-index: 100;
+  z-index: 9;
   font-size: 0.75rem; /* Schrift kleiner */
 }
 
