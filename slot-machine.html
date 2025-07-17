@@ -56,7 +56,7 @@
                 </div>
                 <span>Back to Casino</span>
             </a>
-            <h1 class="minecraft-font text-3xl text-primary machine-name"><i class="ri-gamepad-line"></i> Roulette</h1>
+            <h1 class="minecraft-font text-3xl text-primary machine-name"><i class="ri-gamepad-line"></i> Slot Machine</h1>
         </div>
     </div>
 </header>
@@ -65,25 +65,29 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div class="card rounded-lg overflow-hidden">
                 <div class="machine-image h-96 bg-cover bg-center"
-                     style="background-image: url('assets/machines/Roulette.png')"></div>
+                     style="background-image: url('assets/machines/Poker1.png')"></div>
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-4">
+
+                        <!-- links -->
                         <div class="flex items-center">
                             <div class="w-8 h-8 flex items-center justify-center mr-2 bg-primary bg-opacity-20 rounded-full">
                                 <i class="ri-coins-line text-primary"></i>
                             </div>
                             <div>
                                 <h3 class="minecraft-font text-xl">Betting Range</h3>
-                                <p class="text-gray-400 machine-betting-range">1 Diamond Block</p>
+                                <p class="text-gray-400 machine-betting-range">1 Diamond</p>
                             </div>
                         </div>
+
+                        <!-- rechts -->
                         <div class="flex items-center">
                             <div class="w-8 h-8 flex items-center justify-center mr-2 bg-primary bg-opacity-20 rounded-full">
                                 <i class="ri-percent-line text-primary"></i>
                             </div>
                             <div>
                                 <h3 class="minecraft-font text-xl">Win Rate</h3>
-                                <p class="text-gray-400 machine-win-rate">45.45%</p>
+                                <p class="text-gray-400 machine-win-rate">~11%</p>
                             </div>
                         </div>
                     </div>
@@ -91,16 +95,16 @@
                         <h3 class="minecraft-font text-xl mb-3">Controls</h3>
                         <div class="grid grid-cols-3 gap-4">
                             <div class="text-center">
-                                <p class="text-gray-400">Left Button</p>
-                                <p class="minecraft-font text-xl machine-biggest-win">Spins the Roulette<br>and takes 1 Diamond Block</p>
+                                <p class="text-gray-400">Barrel</p>
+                                <p class="minecraft-font text-xl machine-total-plays">Holds your bets</p>
                             </div>
                             <div class="text-center">
-                                <p class="text-gray-400">Right Button</p>
-                                <p class="minecraft-font text-xl machine-biggest-win">change color<br>black/red/green</p>
+                                <p class="text-gray-400">Button</p>
+                                <p class="minecraft-font text-xl machine-biggest-win">Starts the machine</p>
                             </div>
                             <div class="text-center">
-                                <p class="text-gray-400">Pay in/out</p>
-                                <p class="minecraft-font text-xl machine-active-players">barrel (left) for bets<br>slab (center) for payout</p>
+                                <p class="text-gray-400">Lever</p>
+                                <p class="minecraft-font text-xl machine-active-players">en-/disables autoplay</p>
                             </div>
                             <br>
                         </div>
@@ -109,16 +113,26 @@
                         <h3 class="minecraft-font text-xl mb-3">Payout Ratio</h3>
                         <div class="grid grid-cols-4 gap-4">
                             <div class="text-center">
-                                <p class="text-black font-semibold">Black</p>
-                                <p class="minecraft-font text-xl text-lime-500 font-bold">x2</p>  <!-- gut, besonders -->
+                                <p class="text-cyan-300 font-semibold">
+                                    <span class="minecraft-font text-xl text-yellow-400 font-extrabold">3x </span>
+                                    <img src="https://de.minecraft.wiki/images/Diamantblock.png" alt="Diamond Block" class="inline w-5 h-5 mr-1">
+                                    Diamond
+                                </p>
+                                <p class="minecraft-font text-xl text-yellow-400 font-extrabold">x12</p> <!-- sehr besonders -->
                             </div>
                             <div class="text-center">
-                                <p class="text-red-600 font-semibold">Red</p>
-                                <p class="minecraft-font text-xl text-lime-500 font-bold">x2</p>  <!-- gut, besonders -->
+                                <p class="text-green-400 font-semibold">
+                                    <span class="minecraft-font text-xl text-yellow-400 font-extrabold">3x </span>
+                                    <img src="https://de.minecraft.wiki/images/Smaragdblock.png" alt="Emerald Block" class="inline w-5 h-5 mr-1">
+                                    Emerald</p>
+                                <p class="minecraft-font text-xl text-lime-500 font-bold">x5</p>  <!-- gut, besonders -->
                             </div>
                             <div class="text-center">
-                                <p class="text-lime-400 font-semibold">Green</p>
-                                <p class="minecraft-font text-xl text-yellow-400 font-extrabold">x10</p> <!-- sehr besonders -->
+                                <p class="text-yellow-400 font-semibold">
+                                    <span class="minecraft-font text-xl text-yellow-400 font-extrabold">3x </span>
+                                    <img src="https://de.minecraft.wiki/images/Goldblock.png" alt="Gold Block" class="inline w-5 h-5 mr-1">
+                                    Gold</p>
+                                <p class="minecraft-font text-xl text-lime-500 font-bold">x5</p>  <!-- gut, besonders -->
                             </div>
                             <div class="text-center">
                                 <p class="text-red-800 font-semibold">Loss</p>
@@ -139,16 +153,26 @@
                     <div class="prose prose-invert machine-description">
                         <ul class="list-none text-gray-300 text-left max-w-3xl mx-auto">
                             <li class="py-2 border-b border-gray-700">
-                                <span class="mr-2 text-primary">♦</span>This Minecraft Roulette has a total of 22 fields: 10 black, 10 red, and 2 green spaces. Players place their bets on colors before the wheel spins.
+                                <span class="mr-2 text-primary">♦</span>The machine has 3 wheels, each containing 3 block types
+                                <img src="https://de.minecraft.wiki/images/Diamantblock.png" alt="Diamond Block" class="inline w-5 h-5 mr-1">
+                                <img src="https://de.minecraft.wiki/images/Smaragdblock.png" alt="Emerald Block" class="inline w-5 h-5 mr-1">
+                                <img src="https://de.minecraft.wiki/images/Goldblock.png" alt="Gold Block" class="inline w-5 h-5 mr-1">
+
                             </li>
                             <li class="py-2 border-b border-gray-700">
-                                <span class="mr-2 text-primary">♦</span>When the wheel stops, the Diamond Block lands on one of these fields. If it lands on your chosen color, you win according to the payout rates.
+                                <span class="mr-2 text-primary">♦</span>Upon starting it, all wheels start to spin and proceed to stop randomly one by one (left to right).
                             </li>
                             <li class="py-2 border-b border-gray-700">
-                                <span class="mr-2 text-primary">♦</span>The two green fields are rarer but offer higher rewards, adding extra excitement and risk to the game.
+                                <span class="mr-2 text-primary">♦</span>If all wheels stop displaying the same block, the player wins.
                             </li>
-                            <li class="py-2">
-                                <span class="mr-2 text-primary">♦</span>Overall, this setup keeps the classic roulette experience but with a unique Minecraft twist.
+                            <li class="py-2 border-b border-gray-700">
+                                <span class="mr-2 text-primary">♦</span>The machine requires one diamond to run.
+                            </li>
+                            <li class="py-2 border-b border-gray-700">
+                                <span class="mr-2 text-primary">♦</span>If putting in more diamonds at once, only one diamond will be taken at a time.
+                            </li>
+                            <li class="py-2 border-gray-700">
+                                <span class="mr-2 text-primary">♦</span>Optionally autoplay can be enabled.
                             </li>
                         </ul>
                     </div>
@@ -171,55 +195,73 @@
             </div>
         </div>
     </section>
-    <section id="probabilities" class="mb-12">
+    <section id="probabilities-and-profit-ratio" class="mb-12">
         <div>
             <h2 class="minecraft-font text-3xl mb-6 flex items-center">
                 <div class="w-8 h-8 flex items-center justify-center mr-2">
-                    <i class="ri-pie-chart-line text-primary"></i>
+                    <i class="ri-bar-chart-fill text-red-500"></i>
                 </div>
-                Probabilities (approximated values)
+                Probabilities & Profit Ratio
             </h2>
             <div class="flex flex-wrap gap-8">
                 <!-- Win Probabilities -->
-                <div class="card rounded-lg p-6 flex-1 min-w-[300px] max-w-[50vw]">
-                    <h4 class="minecraft-font text-lg mb-3 flex items-center">
-                        <div class="w-6 h-6 flex items-center justify-center mr-2">
-                            <i class="ri-error-warning-line text-primary"></i>
-                        </div>
-                        Profit Ratio
-                    </h4>
-                    <table class="w-full text-left border-collapse">
+                <div class="card rounded-lg p-6 flex-1 min-w-[200px]">
+                    <table class="w-full text-center border-collapse">
                         <thead>
                         <tr class="border-b border-gray-600">
-                            <th class="py-2">Player Bet</th>
-                            <th class="py-2">Win %</th>
-                            <th class="py-2">Payout Ratio</th>
-                            <th class="py-2">Win % * Payout Ratio / 2</th>
+                            <th class="py-2">
+                                <span class="minecraft-font text-xl">Payline</span>
+                            </th>
+                            <th class="py-2">
+                                <span class="minecraft-font text-xl">Payout</span>
+                            </th>
+                            <th class="py-2">
+                                <span class="minecraft-font text-xl">Win Ratio</span>
+                            </th>
+                            <th class="py-2">
+                                <span class="minecraft-font text-xl">Profit Ratio</span>
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="border-b border-gray-700">
-                            <td class="py-2">Black</td>
-                            <td class="py-2">45.45%</td>
-                            <td class="py-2">x2</td>
-                            <td class="py-2">45.45%</td>
+                            <td class="py-2">
+                                <img src="https://de.minecraft.wiki/images/Diamantblock.png" alt="Diamond Block" class="inline w-5 h-5 mr-1">
+                            </td>
+                            <td class="py-2 minecraft-font text-xl text-yellow-400 font-extrabold">x12</td>
+                            <td class="py-2">1:27</td>
+                            <td class="py-2">~44.4%</td>
                         </tr>
                         <tr class="border-b border-gray-700">
-                            <td class="py-2">Red</td>
-                            <td class="py-2">45.45%</td>
-                            <td class="py-2">x2</td>
-                            <td class="py-2">45.45%</td>
+                            <td class="py-2">
+                                <img src="https://de.minecraft.wiki/images/Smaragdblock.png" alt="Emerald Block" class="inline w-5 h-5 mr-1">
+                            </td>
+                            <td class="py-2 minecraft-font text-xl text-lime-500 font-bold">x5</td>
+                            <td class="py-2">1:27</td>
+                            <td class="py-2">~18.5%</td>
                         </tr>
                         <tr class="border-b border-gray-700">
-                            <td class="py-2">Green</td>
-                            <td class="py-2">09.09%</td>
-                            <td class="py-2">x10</td>
-                            <td class="py-2">45.45%</td>
+                            <td class="py-2">
+                                <img src="https://de.minecraft.wiki/images/Goldblock.png" alt="Gold Block" class="inline w-5 h-5 mr-1">
+                            </td>
+                            <td class="py-2 minecraft-font text-xl text-lime-500 font-bold">x5</td>
+                            <td class="py-2">1:27</td>
+                            <td class="py-2">~18.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">
+                                <span class="minecraft-font text-xl text-red-400 font-extrabold">Total</span>
+                            </td>
+                            <td class="py-2 minecraft-font text-xl text-red-400 font-bold">x22</td>
+                            <td class="py-2">1:9</td>
+                            <td class="py-2">~81.4%</td>
                         </tr>
                         </tbody>
                     </table>
-                    <p class="text-gray-300 mb-6"><br>
                 </div>
+
+
+                <!-- Bust Probabilities -->
             </div>
         </div>
     </section>
@@ -237,38 +279,12 @@
                     <div class="w-6 h-6 flex items-center justify-center mr-2">
                         <i class="ri-error-warning-line text-primary"></i>
                     </div>
-                    Wheel doesn't spin
+                    Wheels don't spin
                 </h3>
-                <p class="text-gray-300 mb-3">The wheel refuses to spin upon button press</p>
+                <p class="text-gray-300 mb-3">One or more wheels don't spin upon button press with bet</p>
                 <div class="bg-gray-800 rounded-lg p-4">
                     <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
-                    <p class="text-gray-400">First make sure you put at least 1 item of the accepted payment (Diamond Block) in the barrel. That and only that allows the machine to run. If that is the case inform me asap (@Fire_I3laze in Discord or pn me).</p>
-                </div>
-            </div>
-            <div class="card rounded-lg p-6">
-                <h3 class="minecraft-font text-xl mb-3 flex items-center">
-                    <div class="w-6 h-6 flex items-center justify-center mr-2">
-                        <i class="ri-error-warning-line text-primary"></i>
-                    </div>
-                    Color Selector Stuck
-                </h3>
-                <p class="text-gray-300 mb-3">The Block representing the color is stuck at the wrong place or won't change</p>
-                <div class="bg-gray-800 rounded-lg p-4">
-                    <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
-                    <p class="text-gray-400">This can happen if for some reason the wood button got replaced by any kind of stone button and you pressed it too quickly. Inform me asap (@Fire_I3laze in Discord or pn me).</p>
-                </div>
-            </div>
-            <div class="card rounded-lg p-6">
-                <h3 class="minecraft-font text-xl mb-3 flex items-center">
-                    <div class="w-6 h-6 flex items-center justify-center mr-2">
-                        <i class="ri-error-warning-line text-primary"></i>
-                    </div>
-                    Wrong Payout
-                </h3>
-                <p class="text-gray-300 mb-3">Payout upon not matching color or no payout upon matching color</p>
-                <div class="bg-gray-800 rounded-lg p-4">
-                    <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
-                    <p class="text-gray-400">This happens if the blocks representing the chosen color get destroyed and be put back in the wrong order. Inform me asap (@Fire_I3laze in Discord or pn me).</p>
+                    <p class="text-gray-400">This is a  common issue that occurs when the machine runs during a server backup. Contact @Fire_I3laze (in game or Discord) to refund your bet and fix the machine.</p>
                 </div>
             </div>
             <div class="card rounded-lg p-6">
@@ -278,47 +294,14 @@
                     </div>
                     No Payout
                 </h3>
-                <p class="text-gray-300 mb-3">No payout at all</p>
+                <p class="text-gray-300 mb-3">I received no payout despite hitting a payline</p>
                 <div class="bg-gray-800 rounded-lg p-4">
                     <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
-                    <p class="text-gray-400">First check whether the machine is actually displaying your expected score. If that is the case inform me asap (@Fire_I3laze in Discord or pn me).</p>
+                    <p class="text-gray-400">This can happen if the symbol blocks haven't been placed currently when fixing the previous mentioned issue. Contact @Fire_I3laze (in gmae or Discord) to receive a manual payout.</p>
                 </div>
             </div>
-            <div class="card rounded-lg p-6">
-                <h3 class="minecraft-font text-xl mb-3 flex items-center">
-                    <div class="w-6 h-6 flex items-center justify-center mr-2">
-                        <i class="ri-error-warning-line text-primary"></i>
-                    </div>
-                    Bet Range
-                </h3>
-                <p class="text-gray-300 mb-3">No matter how many Diamond Blocks I put in, the machine always takes only one</p>
-                <div class="bg-gray-800 rounded-lg p-4">
-                    <h4 class="minecraft-font text-lg mb-2">Solution:</h4>
-                    <p class="text-gray-400">Yes, this is intended. It is meant as quality of life feature so you don't have to put in your bets every single round, considering how short they are. Nor are you supposed to go for incredible high bets but to consecutively play.</p>
-                </div>
-            </div>
-            <!-- More issues will be added dynamically -->
         </div>
     </section>
-    <!--
-    <section>
-        <h2 class="minecraft-font text-3xl mb-6 flex items-center">
-            <div class="w-8 h-8 flex items-center justify-center mr-2">
-                <i class="ri-question-line text-primary"></i>
-            </div>
-            FAQ
-        </h2>
-        <div class="space-y-4 machine-faq">
-            <div class="card rounded-lg p-6">
-                <h3 class="minecraft-font text-xl mb-3">Question?</h3>
-                <p class="text-gray-300">Answer...</p>
-            </div>
-    -->
-            <!-- More FAQ items will be added dynamically -->
-    <!--
-        </div>
-    </section>
-    -->
     <section class="mt-12">
         <h2 class="minecraft-font text-3xl mb-6 flex items-center">
             <div class="w-8 h-8 flex items-center justify-center mr-2">
@@ -356,28 +339,30 @@
                 </div>
             </div>
             <div class="card rounded-lg overflow-hidden">
-                <div style="background-image: url('https://readdy.ai/api/search-image?query=minecraft%20slot%20machine%20made%20with%20redstone%2C%20hoppers%2C%20and%20dispensers%2C%20glowing%20diamond%20decorations%2C%20dark%20background%20with%20subtle%20lighting%2C%20high%20quality%20render%2C%20detailed%20mechanism%20visible&width=400&height=250&seq=slot123&orientation=landscape');"
+                <div style="background-image: url('assets/machines/Roulette.png');"
                      class="h-48 bg-cover bg-center"></div>
                 <div class="p-5">
                     <div class="flex justify-between items-center mb-3">
-                        <h3 class="minecraft-font text-2xl">Slot Machine</h3>
+                        <h3 class="minecraft-font text-2xl">Roulette</h3>
                         <div class="flex items-center">
                             <div class="w-5 h-5 flex items-center justify-center mr-1">
-                                <i class="ri-vip-diamond-line text-blue-300 diamond-icon"></i>
+                                <i class="ri-instance-line text-blue-300 diamond-icon"></i>
                             </div>
                             <span>1</span>
                         </div>
                     </div>
-                    <p class="text-gray-300 mb-4">Classic three-reel slot machine. Place your diamonds and win up to 12
-                        times your bet!</p>
+                    <p class="text-gray-300 mb-4">Bet on colors or numbers and let the redstone wheel decide. Win up to
+                        10x your bet!</p>
                     <div class="flex justify-between items-center">
+                        <!--
                         <div class="flex items-center">
-
-                            <!--<div class="w-5 h-5 flex items-center justify-center mr-1">
-                            <i class="ri-heart-line text-red-500"></i>
-                            </div><span>128</span>-->
+                            <div class="w-5 h-5 flex items-center justify-center mr-1">
+                                <i class="ri-heart-line text-red-500"></i>
+                            </div>
+                            <span>95</span>
                         </div>
-                        <a href="slot-machine.html" class="minecraft-button px-4 py-2 !rounded-button">Details</a>
+                        -->
+                        <a href="roulette.html" class="minecraft-button px-4 py-2 !rounded-button">Details</a>
                     </div>
                 </div>
             </div>
@@ -457,7 +442,7 @@
                 <h3 class="minecraft-font text-xl mb-4">Shortcuts</h3>
                 <ul class="space-y-2">
                     <li><a href="#how-it-works" class="text-gray-400 hover:text-primary">How it works</a></li>
-                    <li><a href="#probabilities" class="text-gray-400 hover:text-primary">Probabilities</a></li>
+                    <li><a href="#probabilities-and-profit-ratio" class="text-gray-400 hover:text-primary">Probabilities & Profit Ratio</a></li>
                     <li><a href="#issues-and-solutions" class="text-gray-400 hover:text-primary">Issues & Solutions</a></li>
                 </ul>
             </div>

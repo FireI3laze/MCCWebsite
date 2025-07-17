@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css"/>
 
     <style>
         :where([class^="ri-"])::before {
@@ -47,32 +47,36 @@
     </style>
 </head>
 <body>
-<div id="particles-container" class="fixed inset-0 pointer-events-none"></div>
+<div
+        id="particles-container"
+        class="fixed inset-0 pointer-events-none"
+        style="z-index: 10;"
+></div>
+
 <header class="border-b border-gray-800 bg-opacity-90 bg-gray-900 sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div class="flex items-center">
-            <div class="w-10 h-10 flex items-center justify-center mr-2">
-                <i class="ri-poker-diamonds-line ri-2x diamond-icon"></i>
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 flex items-center justify-center mr-2">
+                    <i class="ri-poker-diamonds-line ri-2x diamond-icon"></i>
+                </div>
+                <h1 class="minecraft-font text-3xl text-primary">Ashen Ascent Casino</h1>
             </div>
-            <h1 class="minecraft-font text-3xl text-primary">Ashen Ascent Casino</h1>
+            <!--
+            <div class="flex items-center space-x-4">
+            <button id="login-button" class="minecraft-button px-4 py-2 !rounded-button flex items-center">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-discord-line"></i>
+            </div>
+            <span>Mit Discord anmelden</span>
+            </button>
+            -->
         </div>
-        <!--
-        <div class="flex items-center space-x-4">
-        <button id="login-button" class="minecraft-button px-4 py-2 !rounded-button flex items-center">
-        <div class="w-5 h-5 flex items-center justify-center mr-2">
-        <i class="ri-discord-line"></i>
-        </div>
-        <span>Mit Discord anmelden</span>
-        </button>
-        -->
-    </div>
-    </div>
-</header>
+    </header>
 <main class="container mx-auto px-4 py-8">
     <section class="mb-12">
-        <div class="relative rounded-lg overflow-hidden">
+        <div class="relative rounded-lg overflow-hidden" style="height: 24rem;">
             <div style="background-image: url('assets/house/Casino.png');"
-                 class="w-full h-96 bg-cover bg-center relative">
+                 class="w-full h-full bg-cover bg-center relative">
                 <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent"></div>
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full max-w-2xl px-8 py-6">
@@ -92,20 +96,50 @@
                             </a>
                         </div>
                         <div class="flex space-x-4">
-                            <button id="scrollToGames" class="minecraft-button bg-primary text-gray-900 font-bold px-6 py-3 !rounded-button">
+                            <button id="scrollToGames"
+                                    class="minecraft-button bg-primary text-gray-900 font-bold px-6 py-3 !rounded-button">
                                 View Machines
                             </button>
-                            <!--
-                            <button class="minecraft-button px-6 py-3 !rounded-button">
-                            Join Server
-                            </button>
-                            -->
+                        </div>
+
+                        <div class="text-cyan-300 mt-2" style="position: fixed; top: 10px; right: 10px; font-size: 20px; z-index: 3000;">
+                            <span id="diamondCounter">0</span>
+                            <img src="https://minecraft.wiki/images/Diamond_JE2_BE2.png" alt="Diamond" class="inline w-5 h-5 mr-1">
                         </div>
                     </div>
+                </div>
+
+                <!-- Slot Machine unten rechts -->
+                <div id="slot-machine" class="card rounded-lg p-6 mb-8" style="background-color: rgba(30, 32, 46, 0.85); border: 2px solid #2d3748;">
+                    <!--<h2 class="minecraft-font text-2xl mb-4">Slot Machine</h2>-->
+                    <div class="flex justify-center space-x-6 mb-6">
+                        <div class="wheel" data-index="0" style="width:80px; height:80px; border: 2px solid #ef4444; border-radius: 8px; background:#1a1c2a; display:flex; align-items:center; justify-content:center;">
+                            <img src="https://de.minecraft.wiki/images/Diamantblock.png" alt="Diamond Block" style="width:60px; height:60px;">
+                        </div>
+                        <div class="wheel" data-index="1" style="width:80px; height:80px; border: 2px solid #ef4444; border-radius: 8px; background:#1a1c2a; display:flex; align-items:center; justify-content:center;">
+                            <img src="https://de.minecraft.wiki/images/Smaragdblock.png" alt="Emerald Block" style="width:60px; height:60px;">
+                        </div>
+                        <div class="wheel" data-index="2" style="width:80px; height:80px; border: 2px solid #ef4444; border-radius: 8px; background:#1a1c2a; display:flex; align-items:center; justify-content:center;">
+                            <img src="https://de.minecraft.wiki/images/Goldblock.png" alt="Gold Block" style="width:60px; height:60px;">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center space-x-4 mb-6">
+                        <button id="spinButton" class="minecraft-button px-6 py-2 rounded text-white font-bold">Spin (1 Diamond)</button>
+                        <label style="color:#ef4444; display:flex; align-items:center; font-family: 'VT323', monospace; font-size: 1.25rem; cursor:pointer;">
+                            <input type="checkbox" id="autoPlayToggle" style="margin-right: 0.5rem;">
+                            Autoplay
+                        </label>
+                    </div>
+                    <div style="display:none; color:#eab308; font-family: 'VT323', monospace; font-size: 1.5rem; text-align:center;">
+                        Diamonds: <span id="slotDiamondCounter">0</span>
+                    </div>
+                    <div id="slotMessage" style="display:none; margin-top: 1rem; text-align:center; font-family: 'VT323', monospace; font-size: 1.25rem; color:#ef4444; min-height: 2rem;"></div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- HOUSE RULES -->
     <section class="mb-12 scroll-mt-24" id="house-rules">
         <h2 class="minecraft-font text-3xl mb-6 flex items-center justify-start">
@@ -126,15 +160,18 @@
                 </li>
                 <li class="py-2 border-b border-gray-700 relative pl-8">
                     <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
-                    Don't place any kind of block or item that can trigger upon a Redstone Signal. Even at a spot where it seems safe, it can lead to unexpected results.
+                    Don't place any kind of block or item that can trigger upon a Redstone Signal. Even at a spot where
+                    it seems safe, it can lead to unexpected results.
                 </li>
                 <li class="py-2 border-b border-gray-700 relative pl-8">
                     <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
-                    If someone is playing, stay away from the winning outputs. And don't press any buttons without consent.
+                    If someone is playing, stay away from the winning outputs. And don't press any buttons without
+                    consent.
                 </li>
                 <li class="py-2 border-b border-gray-700 relative pl-8">
                     <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
-                    Not following the rules of the games, provided in the book next to it or on this website will not lead to a refund or can be considered cheating/exploiting bugs.
+                    Not following the rules of the games, provided in the book next to it or on this website will not
+                    lead to a refund or can be considered cheating/exploiting bugs.
                 </li>
                 <li class="py-2 border-b border-gray-700 relative pl-8">
                     <span class="absolute left-2 top-1/2 -translate-y-1/2 text-red-500 text-xl">♦</span>
@@ -152,7 +189,7 @@
         </div>
     </section>
     <!-- MACHINES -->
-    <section class="mb-12 scroll-mt-24"  id="machines">
+    <section class="mb-12 scroll-mt-24" id="machines">
         <h2 class="minecraft-font text-3xl mb-6 flex items-center">
             <div class="w-8 h-8 flex items-center justify-center mr-2">
                 <i class="ri-gamepad-line text-primary"></i>
@@ -161,32 +198,32 @@
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Spielautomat 1 -->
-            <!--
             <div class="card rounded-lg overflow-hidden">
-            <div style="background-image: url('https://readdy.ai/api/search-image?query=minecraft%20slot%20machine%20made%20with%20redstone%2C%20hoppers%2C%20and%20dispensers%2C%20glowing%20diamond%20decorations%2C%20dark%20background%20with%20subtle%20lighting%2C%20high%20quality%20render%2C%20detailed%20mechanism%20visible&width=400&height=250&seq=slot123&orientation=landscape');" class="h-48 bg-cover bg-center"></div>
-            <div class="p-5">
-            <div class="flex justify-between items-center mb-3">
-            <h3 class="minecraft-font text-2xl">Slots</h3>
-            <div class="flex items-center">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-diamond-line diamond-icon"></i>
+                <div style="background-image: url('https://readdy.ai/api/search-image?query=minecraft%20slot%20machine%20made%20with%20redstone%2C%20hoppers%2C%20and%20dispensers%2C%20glowing%20diamond%20decorations%2C%20dark%20background%20with%20subtle%20lighting%2C%20high%20quality%20render%2C%20detailed%20mechanism%20visible&width=400&height=250&seq=slot123&orientation=landscape');"
+                     class="h-48 bg-cover bg-center"></div>
+                <div class="p-5">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="minecraft-font text-2xl">Slot Machine</h3>
+                        <div class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-1">
+                                <i class="ri-vip-diamond-line text-blue-300 diamond-icon"></i>
+                            </div>
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">Classic three-reel slot machine. Place your diamonds and win up to 12
+                        times your bet!</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+
+                            <!--<div class="w-5 h-5 flex items-center justify-center mr-1">
+                            <i class="ri-heart-line text-red-500"></i>
+                            </div><span>128</span>-->
+                        </div>
+                        <a href="slot-machine.html" class="minecraft-button px-4 py-2 !rounded-button">Details</a>
+                    </div>
+                </div>
             </div>
-            <span>2-10</span>
-            </div>
-            </div>
-            <p class="text-gray-300 mb-4">Classic three-reel slot machine. Place your diamonds and win up to 5 times your bet!</p>
-            <div class="flex justify-between items-center">
-            <div class="flex items-center">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-heart-line text-red-500"></i>
-            </div>
-            <span>128</span>
-            </div>
-            <a href="machine.html?id=diamond-slots" class="minecraft-button px-4 py-2 !rounded-button">Details</a>
-            </div>
-            </div>
-            </div>
-            -->
             <!-- Spielautomat 2 -->
             <div class="card rounded-lg overflow-hidden">
                 <div style="background-image: url('assets/machines/Roulette.png');"
@@ -216,7 +253,8 @@
             </div>
             <!-- Spielautomat 3 -->
             <div class="card rounded-lg overflow-hidden">
-                <div style="background-image: url('assets/machines/BlackJack.png');" class="h-48 bg-cover bg-center"></div>
+                <div style="background-image: url('assets/machines/BlackJack.png');"
+                     class="h-48 bg-cover bg-center"></div>
                 <div class="p-5">
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="minecraft-font text-2xl">Black Jack</h3>
@@ -242,33 +280,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Spielautomat 4 -->
-            <!--coming soon
-            <div class="card rounded-lg overflow-hidden">
-            <div style="background-image: url('https://readdy.ai/api/search-image?query=minecraft%20horse%20racing%20track%20with%20redstone%20mechanism%2C%20multiple%20colored%20horses%20on%20tracks%2C%20betting%20stations%2C%20spectator%20area%2C%20dark%20casino%20environment%20with%20race%20lights%2C%20high%20quality%20render%2C%20detailed%20racing%20setup&width=400&height=250&seq=racing123&orientation=landscape');" class="h-48 bg-cover bg-center"></div>
-            <div class="p-5">
-            <div class="flex justify-between items-center mb-3">
-            <h3 class="minecraft-font text-2xl">Lotterie</h3>
-            <div class="flex items-center">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-diamond-line diamond-icon"></i>
-            </div>
-            <span>1-5</span>
-            </div>
-            </div>
-            <p class="text-gray-300 mb-4">Kaufe Lose und gewinne den Jackpot! Jede Stunde wird ein Gewinner gezogen. Je mehr Lose, desto höher deine Gewinnchance!</p>
-            <div class="flex justify-between items-center">
-            <div class="flex items-center">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-heart-line text-red-500"></i>
-            </div>
-            <span>215</span>
-            </div>
-            <a href="machine.html?id=lotterie" class="minecraft-button px-4 py-2 !rounded-button">Details</a>
-            </div>
-            </div>
-            </div>
-            -->
             <!-- Spielautomat 5 -->
             <div class="card rounded-lg overflow-hidden">
                 <div style="background-image: url('assets/machines/Poker1.png');"
@@ -296,33 +307,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Spielautomat 6 -->
-            <!--coming soon (if ever)
-           <div class="card rounded-lg overflow-hidden">
-           <div style="background-image: url('https://readdy.ai/api/search-image?query=minecraft%20coin%20flip%20machine%20with%20redstone%20comparators%2C%20two%20display%20areas%20showing%20heads%20and%20tails%2C%20betting%20stations%2C%20dark%20casino%20environment%20with%20gold%20block%20decorations%2C%20high%20quality%20render%2C%20detailed%20coin%20flip%20mechanism&width=400&height=250&seq=coinflip123&orientation=landscape');" class="h-48 bg-cover bg-center"></div>
-           <div class="p-5">
-           <div class="flex justify-between items-center mb-3">
-           <h3 class="minecraft-font text-2xl">Münzwurf</h3>
-           <div class="flex items-center">
-           <div class="w-5 h-5 flex items-center justify-center mr-1">
-           <i class="ri-diamond-line diamond-icon"></i>
-           </div>
-           <span>1-100</span>
-           </div>
-           </div>
-           <p class="text-gray-300 mb-4">Kopf oder Zahl? Setze einen beliebigen Betrag und verdopple ihn bei richtiger Vorhersage. Einfach und spannend!</p>
-           <div class="flex justify-between items-center">
-           <div class="flex items-center">
-           <div class="w-5 h-5 flex items-center justify-center mr-1">
-           <i class="ri-heart-line text-red-500"></i>
-           </div>
-           <span>76</span>
-           </div>
-           <a href="machine.html?id=muenzwurf" class="minecraft-button px-4 py-2 !rounded-button">Details</a>
-           </div>
-           </div>
-           -->
-        </div>
         </div>
     </section>
     <section class="scroll-mt-24" id="events">
@@ -334,14 +318,16 @@
         </h2>
 
         <div class="card rounded-lg p-6">
-            <a href="events.html#lottery" class="block mb-6 border-b border-gray-700 pb-6 hover:bg-red-600/10 transition">
+            <a href="events.html#lottery"
+               class="block mb-6 border-b border-gray-700 pb-6 hover:bg-red-600/10 transition">
                 <div class="flex items-center mb-3">
                     <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary bg-opacity-20 rounded-full">
                         <i class="ri-gift-line text-primary"></i>
                     </div>
                     <div>
                         <h3 class="minecraft-font text-xl">Lottery Event</h3>
-                        <p class="text-sm text-gray-400" data-weekday="7" data-nth="1" data-hour="20" data-minute="0"><span> | ⏳ ~15min</span></p>
+                        <p class="text-sm text-gray-400" data-weekday="7" data-nth="1" data-hour="20" data-minute="0">
+                            <span> | ⏳ ~15min</span></p>
                     </div>
                 </div>
                 <p class="text-gray-300">Every 1. Sunday a month we will host a Lottery Event!
@@ -355,11 +341,13 @@
                     </div>
                     <div>
                         <h3 class="minecraft-font text-xl">Poker Night</h3>
-                        <p class="text-sm text-gray-400" data-weekday="5" data-nth="2,4" data-hour="21" data-minute="0"><span>| ⏳ Open End</span></p>
+                        <p class="text-sm text-gray-400" data-weekday="5" data-nth="2,4" data-hour="21" data-minute="0">
+                            <span>| ⏳ Open End</span></p>
                     </div>
                 </div>
                 <p class="text-gray-300">Every 2. and 4. Friday a month we will host a Poker Night!
-                    Every table will be enabled for free and we are looking for some fun with gambling enthusiasts!<br>Click to find out more.</p>
+                    Every table will be enabled for free and we are looking for some fun with gambling enthusiasts!<br>Click
+                    to find out more.</p>
             </a>
 
             <a href="events.html#fight" class="block hover:bg-red-600/10 transition">
@@ -369,11 +357,13 @@
                     </div>
                     <div>
                         <h3 class="minecraft-font text-xl">Fighting Tournament (WiP)</h3>
-                        <p class="text-sm text-gray-400" data-weekday="6" data-nth="3" data-hour="19" data-minute="0"><span>| ⏳ ~1 hour (WiP, date & time suspected to change)</span></p>
+                        <p class="text-sm text-gray-400" data-weekday="6" data-nth="3" data-hour="19" data-minute="0">
+                            <span>| ⏳ ~1 hour (WiP, date & time suspected to change)</span></p>
                     </div>
                 </div>
                 <p class="text-gray-300">Every 3. Saturday a month we will host a Fighting Tournament!
-                    Become a contestant and fight for the big price or watch from the far and bet on your favourite.<br>Click to find out more.</p>
+                    Become a contestant and fight for the big price or watch from the far and bet on your favourite.<br>Click
+                    to find out more.</p>
             </a>
         </div>
     </section>
@@ -394,128 +384,11 @@
         </div>
     </section>
 
-    <section class="mb-12 scroll-mt-24"  id="faq">
+    <section class="mb-12 scroll-mt-24" id="faq">
         <h2 class="minecraft-font text-3xl mb-6 flex items-center">
             <div class="w-8 h-8 flex items-center justify-center mr-2">
                 <i class="ri-trophy-line text-primary"></i>
             </div>
-            <!--coming soon (never)
-            Bestenliste
-            </h2>
-            <div class="card rounded-lg p-6">
-            <div class="overflow-x-auto">
-            <table class="w-full">
-            <thead>
-            <tr class="border-b border-gray-700">
-            <th class="text-left py-3 px-4">Rang</th>
-            <th class="text-left py-3 px-4">Spieler</th>
-            <th class="text-left py-3 px-4">Gewonnene Diamanten</th>
-            <th class="text-left py-3 px-4">Lieblingsspiel</th>
-            <th class="text-left py-3 px-4">Letzte Aktivität</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="border-b border-gray-700">
-            <td class="py-3 px-4 flex items-center">
-            <div class="w-6 h-6 flex items-center justify-center mr-2 bg-yellow-500 text-gray-900 rounded-full">
-            1
-            </div>
-            </td>
-            <td class="py-3 px-4">DiamondKing_2025</td>
-            <td class="py-3 px-4">
-            <div class="flex items-center">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-diamond-line diamond-icon"></i>
-            </div>
-            <span>1,245</span>
-            </div>
-            </td>
-            <td class="py-3 px-4">Redstone Roulette</td>
-            <td class="py-3 px-4">Heute, 14:32</td>
-            </tr>
-            <tr class="border-b border-gray-700">
-            <td class="py-3 px-4 flex items-center">
-            <div class="w-6 h-6 flex items-center justify-center mr-2 bg-gray-400 text-gray-900 rounded-full">
-            2
-            </div>
-            </td>
-            <td class="py-3 px-4">MineGambler78</td>
-            <td class="py-3 px-4">
-            <div class="flex items-center">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-diamond-line diamond-icon"></i>
-            </div>
-            <span>987</span>
-            </div>
-            </td>
-            <td class="py-3 px-4">Emerald Blackjack</td>
-            <td class="py-3 px-4">Gestern, 20:15</td>
-            </tr>
-            <tr class="border-b border-gray-700">
-            <td class="py-3 px-4 flex items-center">
-            <div class="w-6 h-6 flex items-center justify-center mr-2 bg-yellow-700 text-gray-900 rounded-full">
-            3
-            </div>
-            </td>
-            <td class="py-3 px-4">RedstoneWizard</td>
-            <td class="py-3 px-4">
-            <div class="flex items-center">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-diamond-line diamond-icon"></i>
-            </div>
-            <span>754</span>
-            </div>
-            </td>
-            <td class="py-3 px-4">Diamond Slots</td>
-            <td class="py-3 px-4">05.07.2025</td>
-            </tr>
-            <tr class="border-b border-gray-700">
-            <td class="py-3 px-4 flex items-center">
-            <div class="w-6 h-6 flex items-center justify-center mr-2 bg-gray-700 text-gray-300 rounded-full">
-            4
-            </div>
-            </td>
-            <td class="py-3 px-4">LuckyMiner42</td>
-            <td class="py-3 px-4">
-            <div class="flex items-center">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-diamond-line diamond-icon"></i>
-            </div>
-            <span>621</span>
-            </div>
-            </td>
-            <td class="py-3 px-4">Pferderennen</td>
-            <td class="py-3 px-4">04.07.2025</td>
-            </tr>
-            <tr>
-            <td class="py-3 px-4 flex items-center">
-            <div class="w-6 h-6 flex items-center justify-center mr-2 bg-gray-700 text-gray-300 rounded-full">
-            5
-            </div>
-            </td>
-            <td class="py-3 px-4">EnderGambler</td>
-            <td class="py-3 px-4">
-            <div class="flex items-center">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-diamond-line diamond-icon"></i>
-            </div>
-            <span>512</span>
-            </div>
-            </td>
-            <td class="py-3 px-4">Lotterie</td>
-            <td class="py-3 px-4">03.07.2025</td>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-            </div>
-            </section>
-            <section class="mb-12">
-            <h2 class="minecraft-font text-3xl mb-6 flex items-center">
-            <div class="w-8 h-8 flex items-center justify-center mr-2">
-            <i class="ri-information-line text-primary"></i>
-            </div>
-            -->
             FAQ
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -526,7 +399,8 @@
                     </div>
                     How do I bet the diamonds?
                 </h3>
-                <p class="text-gray-300">To stake diamonds, simply place them in the labeled Barrel or Chest provided on each
+                <p class="text-gray-300">To stake diamonds, simply place them in the labeled Barrel or Chest provided on
+                    each
                     machine. The number of diamonds inserted may determine your stake. Pay attention to the minimum and
                     maximum bets for each machine!</p>
             </div>
@@ -638,10 +512,11 @@
                         <div class="w-5 h-5 flex items-center justify-center mr-2">
                             <i class="ri-map-pin-line text-gray-400"></i>
                         </div>
-                        <span class="text-gray-400">Casino at <a href="https://map.lakehead.club/?worldname=world&mapname=surface&zoom=6&x=-470&y=64&z=-10"
-                                                                 class="hover:underline"
-                                                                 target="_blank"
-                                                                 rel="noopener noreferrer">
+                        <span class="text-gray-400">Casino at <a
+                                href="https://map.lakehead.club/?worldname=world&mapname=surface&zoom=6&x=-470&y=64&z=-10"
+                                class="hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer">
                                 x:-410 y:65 z:-10
                             </a></span>
                     </li>
@@ -667,7 +542,8 @@
             -->
         </div>
         <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Ashen Ascent Casino. All rights reserved. Not affiliated with
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Ashen Ascent Casino. All rights reserved. Not
+                affiliated with
                 Mojang.</p>
             <!--
             <div class="flex space-x-4">
@@ -686,70 +562,240 @@
     document.addEventListener('DOMContentLoaded', function () {
         const container = document.getElementById('particles-container');
 
+        // Globaler Diamond-Count & Update-Funktion
+        window.diamondCount = 5;
+
+        window.updateDiamondCounter = function () {
+            const counterEl = document.getElementById('diamondCounter');
+            if (counterEl) {
+                counterEl.textContent = window.diamondCount;
+            }
+        };
+
+        window.updateDiamondCount = function (delta) {
+            window.diamondCount += delta;
+            if (window.diamondCount < 0) window.diamondCount = 0;
+            window.updateDiamondCounter();
+        };
+
         function createParticle() {
             const particle = document.createElement('div');
             particle.classList.add('particle');
-// Zufällige Größe zwischen 2 und 5 Pixeln
-            const size = Math.random() * 3 + 2;
+            particle.style.position = 'absolute';
+            const size = Math.random() * 5 + 5;
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
-// Zufällige Position
             const posX = Math.random() * window.innerWidth;
             const posY = Math.random() * window.innerHeight;
             particle.style.left = `${posX}px`;
             particle.style.top = `${posY}px`;
-// Zufällige Farbe (Minecraft-Thema)
             const colors = [
-                'rgba(74, 222, 128, 0.5)', // Grün (Smaragd)
-                'rgba(59, 130, 246, 0.5)', // Blau (Diamant)
-                'rgba(249, 115, 22, 0.5)', // Orange (Redstone)
-                'rgba(234, 179, 8, 0.5)'   // Gelb (Gold)
+                'rgba(239, 68, 68, 1)',
+                'rgba(0, 0, 0, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(234, 179, 8, 1)'
             ];
             particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-// Animation
             particle.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
             particle.style.opacity = Math.random() * 0.5;
-// Hinzufügen zum Container
             container.appendChild(particle);
-// Entfernen nach einer zufälligen Zeit
             setTimeout(() => {
                 particle.remove();
             }, Math.random() * 10000 + 10000);
         }
 
-// Initiale Partikel
-        for (let i = 0; i < 20; i++) {
+        function createDiamondParticle() {
+            const diamond = document.createElement('img');
+            diamond.classList.add('diamond-particle');
+            diamond.src = 'https://minecraft.wiki/images/Diamond_JE2_BE2.png';
+            diamond.style.position = 'absolute';
+            diamond.style.pointerEvents = 'auto';
+            diamond.style.userSelect = 'none';
+            diamond.style.zIndex = '1001';
+            const posX = Math.random() * window.innerWidth;
+            const posY = -40;
+            diamond.style.left = `${posX}px`;
+            diamond.style.top = `${posY}px`;
+            const size = Math.random() * 10 + 20;
+            diamond.style.width = `${size}px`;
+            diamond.style.height = `${size}px`;
+            diamond.style.animation = `fall-down ${8 + Math.random() * 4}s linear forwards`;
+
+            container.appendChild(diamond);
+            setTimeout(() => diamond.remove(), 13000);
+
+            diamond.addEventListener('click', (event) => {
+                diamond.remove();
+                window.updateDiamondCount(1);
+                showPlusOne(posX, event.clientY);
+            });
+        }
+
+        function showPlusOne(x, y) {
+            const plusOne = document.createElement('div');
+            plusOne.textContent = '+1';
+            plusOne.style.position = 'absolute';
+            plusOne.style.left = `${x}px`;
+            plusOne.style.top = `${y}px`;
+            plusOne.style.fontFamily = `'VT323', monospace`;
+            plusOne.style.fontSize = '1.5rem';
+            plusOne.style.color = '#67e8f9';
+            plusOne.style.zIndex = '2000';
+            plusOne.style.opacity = '1';
+            plusOne.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+            container.appendChild(plusOne);
+
+            requestAnimationFrame(() => {
+                plusOne.style.transform = 'translateY(-50px)';
+                plusOne.style.opacity = '0';
+            });
+
+            setTimeout(() => plusOne.remove(), 1000);
+        }
+
+        // Initiale Partikel
+        for (let i = 0; i < 35; i++) {
             createParticle();
         }
-// Neue Partikel in Intervallen erstellen
-        setInterval(createParticle, 2000);
-    });
-    // Scrollen bei Button press
-    document.getElementById("scrollToGames").addEventListener("click", function () {
-        document.getElementById("machines").scrollIntoView({ behavior: "smooth" });
-    });
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get("scrollToEvents") === "true") {
-            const el = document.getElementById("events");
-            if (el) {
-                // Ganz nach oben, damit kein Sprung passiert
-                window.scrollTo(0, 0);
+        setInterval(createParticle, 1250);
 
-                // Header-Höhe berechnen
-                const headerHeight = document.querySelector("header")?.offsetHeight || 0;
-                const extraOffset = 20;
-
-                // Verzögertes Scrollen mit smooth
-                setTimeout(() => {
-                    const y = el.getBoundingClientRect().top + window.scrollY - headerHeight - extraOffset;
-                    window.scrollTo({top: y, behavior: "smooth"});
-                }, 100);
+        setInterval(() => {
+            if (Math.random() < 0.05) {
+                createDiamondParticle();
             }
+        }, 2000);
+
+        window.updateDiamondCounter();
+    });
+</script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const wheels = [
+            'https://de.minecraft.wiki/images/Diamantblock.png',
+            'https://de.minecraft.wiki/images/Smaragdblock.png',
+            'https://de.minecraft.wiki/images/Goldblock.png'
+        ];
+        const spinButton = document.getElementById('spinButton');
+        const autoPlayToggle = document.getElementById('autoPlayToggle');
+        const diamondCounterEl = document.getElementById('slotDiamondCounter');
+        const slotMessage = document.getElementById('slotMessage');
+        const wheelEls = document.querySelectorAll('#slot-machine .wheel img');
+
+        let isSpinning = false;
+        let autoPlayInterval = null;
+
+        diamondCounterEl.textContent = window.diamondCount;
+
+        function syncSlotCounter() {
+            diamondCounterEl.textContent = window.diamondCount;
+        }
+
+        // Gewinne Multiplier je nach Symbol
+        const payoutMultiplier = {
+            [wheels[0]]: 12, // Diamond block
+            [wheels[1]]: 5,  // Emerald block
+            [wheels[2]]: 5   // Gold block
+        };
+
+        function spinOnce() {
+            if (isSpinning || window.diamondCount < 1) {
+                slotMessage.textContent = window.diamondCount < 1 ? 'Nicht genug Diamanten zum Spielen!' : 'Maschine läuft bereits!';
+                return;
+            }
+            isSpinning = true;
+            slotMessage.textContent = 'Drehen...';
+
+            window.updateDiamondCount(-1);
+            syncSlotCounter();
+
+            let stops = [null, null, null];
+
+            function animateWheel(index, delay) {
+                return new Promise(resolve => {
+                    const wheelEl = wheelEls[index].parentElement;
+                    wheelEl.classList.add('spinning');
+
+                    let count = 0;
+                    const interval = setInterval(() => {
+                        const randomImg = wheels[Math.floor(Math.random() * wheels.length)];
+                        wheelEls[index].src = randomImg;
+                        count++;
+                        if (count > 10) {
+                            clearInterval(interval);
+                            wheelEl.classList.remove('spinning');
+                            resolve();
+                        }
+                    }, 100);
+                    setTimeout(() => {
+                        clearInterval(interval);
+                        wheelEl.classList.remove('spinning');
+                        resolve();
+                    }, delay);
+                });
+            }
+
+
+            (async () => {
+                await animateWheel(0, 1200);
+                stops[0] = wheelEls[0].src;
+                await animateWheel(1, 1400);
+                stops[1] = wheelEls[1].src;
+                await animateWheel(2, 1600);
+                stops[2] = wheelEls[2].src;
+
+                if (stops[0] === stops[1] && stops[1] === stops[2]) {
+                    const winAmount = payoutMultiplier[stops[0]] || 0;
+                    window.updateDiamondCount(winAmount);
+                    slotMessage.textContent = `Gewonnen! ${winAmount} Diamant${winAmount > 1 ? 'en' : ''} hinzugefügt!`;
+                } else {
+                    slotMessage.textContent = 'Leider verloren. Versuch es nochmal!';
+                }
+
+                syncSlotCounter();
+                isSpinning = false;
+            })();
+        }
+
+        spinButton.addEventListener('click', spinOnce);
+
+        autoPlayToggle.addEventListener('change', () => {
+            if (autoPlayToggle.checked) {
+                if (!autoPlayInterval) {
+                    autoPlayInterval = setInterval(() => {
+                        if (window.diamondCount < 1) {
+                            slotMessage.textContent = 'Nicht genug Diamanten zum Spielen! Autoplay gestoppt.';
+                            autoPlayToggle.checked = false;
+                            clearInterval(autoPlayInterval);
+                            autoPlayInterval = null;
+                            return;
+                        }
+                        spinOnce();
+                    }, 4000);
+                }
+            } else {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
+                    slotMessage.textContent = 'Autoplay gestoppt.';
+                }
+            }
+        });
+
+        const globalDiamondCounter = document.getElementById('diamondCounter');
+        if (globalDiamondCounter) {
+            const observer = new MutationObserver(() => {
+                syncSlotCounter();
+            });
+            observer.observe(globalDiamondCounter, { childList: true });
         }
     });
 </script>
+
+
 <!--
 <script id="newsletter-script">
     document.addEventListener('DOMContentLoaded', function () {
