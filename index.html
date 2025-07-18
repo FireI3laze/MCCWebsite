@@ -54,8 +54,8 @@
 ></div>
 
 <header class="border-b border-gray-800 bg-opacity-90 bg-gray-900 sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
+        <div class="your-particle-anchor container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center scroll-to-top">
                 <div class="w-10 h-10 flex items-center justify-center mr-2">
                     <i class="ri-poker-diamonds-line ri-2x diamond-icon"></i>
                 </div>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="flex space-x-4">
                             <button id="scrollToGames"
-                                    class="minecraft-button bg-primary text-gray-900 font-bold px-6 py-3 !rounded-button">
+                                    class="minecraft-button go-to-games bg-primary text-gray-900 font-bold px-6 py-3 !rounded-button">
                                 View Machines
                             </button>
                         </div>
@@ -110,8 +110,8 @@
                 </div>
 
                 <!-- Slot Machine unten rechts -->
-                <div id="slot-machine" class="card rounded-lg p-6 mb-8" style="background-color: rgba(30, 32, 46, 0.85); border: 2px solid #2d3748;">
-                    <!--<h2 class="minecraft-font text-2xl mb-4">Slot Machine</h2>-->
+                <div id="slot-machine" class="rounded-lg p-6 mb-8" style="background-color: rgba(0, 0, 0, 0.25);">
+                <!--<h2 class="minecraft-font text-2xl mb-4">Slot Machine</h2>-->
                     <div class="flex justify-center space-x-6 mb-6">
                         <div class="wheel" data-index="0" style="width:80px; height:80px; border: 2px solid #ef4444; border-radius: 8px; background:#1a1c2a; display:flex; align-items:center; justify-content:center;">
                             <img src="https://de.minecraft.wiki/images/Diamantblock.png" alt="Diamond Block" style="width:60px; height:60px;">
@@ -126,8 +126,8 @@
 
                     <div class="flex justify-center space-x-4 mb-6">
                         <button id="spinButton" class="minecraft-button px-6 py-2 rounded text-white font-bold">Spin (1 Diamond)</button>
-                        <label style="color:#ef4444; display:flex; align-items:center; font-family: 'VT323', monospace; font-size: 1.25rem; cursor:pointer;">
-                            <input type="checkbox" id="autoPlayToggle" style="margin-right: 0.5rem;">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="autoPlayToggle">
                             Autoplay
                         </label>
                     </div>
@@ -578,11 +578,39 @@
             window.updateDiamondCounter();
         };
 
+        function apply3DRotationAndAnimation(element, animationName, durationSec, infinite = false) {
+            // Zufällige Start- und Endrotation in Grad
+            const startRotateX = (Math.random() * 360).toFixed(2) + "deg";
+            const startRotateY = (Math.random() * 360).toFixed(2) + "deg";
+            const startRotateZ = (Math.random() * 360).toFixed(2) + "deg";
+
+            const endRotateX = (Math.random() * 360).toFixed(2) * 3 + "deg";
+            const endRotateY = (Math.random() * 360).toFixed(2) * 3 + "deg";
+            const endRotateZ = (Math.random() * 360).toFixed(2) * 3 + "deg";
+
+            // Setze CSS-Variablen für Animation
+            element.style.setProperty('--start-rotate-x', startRotateX);
+            element.style.setProperty('--start-rotate-y', startRotateY);
+            element.style.setProperty('--start-rotate-z', startRotateZ);
+
+            element.style.setProperty('--end-rotate-x', endRotateX);
+            element.style.setProperty('--end-rotate-y', endRotateY);
+            element.style.setProperty('--end-rotate-z', endRotateZ);
+
+            // Animation setzen
+            element.style.animationName = animationName;
+            element.style.animationDuration = `${durationSec}s`;
+            element.style.animationTimingFunction = 'linear';
+            element.style.animationFillMode = 'forwards';
+            element.style.animationIterationCount = infinite ? 'infinite' : '1';
+        }
+
         function createParticle() {
             const particle = document.createElement('div');
             particle.classList.add('particle');
             particle.style.position = 'absolute';
-            const size = Math.random() * 5 + 5;
+            particle.style.zIndex = '-1';
+            const size = Math.random() * 5 + 6;
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
             const posX = Math.random() * window.innerWidth;
@@ -596,13 +624,19 @@
                 'rgba(234, 179, 8, 1)'
             ];
             particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
-            particle.style.opacity = Math.random() * 0.5;
+            particle.style.opacity = "" + Math.random() * 0.75;
+
+            // 3D Rotation + Animation "float-rotate", Dauer zufällig 10-20s, infinite
+            apply3DRotationAndAnimation(particle, 'float-rotate', Math.random() * 10 + 10, true);
+
             container.appendChild(particle);
+
+            // Entferne Partikel nach zufälliger Zeit, damit nicht ewig im DOM bleiben
             setTimeout(() => {
                 particle.remove();
             }, Math.random() * 10000 + 10000);
         }
+
 
         function createDiamondParticle() {
             const diamond = document.createElement('img');
@@ -612,6 +646,7 @@
             diamond.style.pointerEvents = 'auto';
             diamond.style.userSelect = 'none';
             diamond.style.zIndex = '1001';
+
             const posX = Math.random() * window.innerWidth;
             const posY = -40;
             diamond.style.left = `${posX}px`;
@@ -619,9 +654,12 @@
             const size = Math.random() * 10 + 20;
             diamond.style.width = `${size}px`;
             diamond.style.height = `${size}px`;
-            diamond.style.animation = `fall-down ${8 + Math.random() * 4}s linear forwards`;
 
-            container.appendChild(diamond);
+            // 3D Rotation + Animation "fall-rotate", Dauer zufällig 8-12s, einmalig
+            apply3DRotationAndAnimation(diamond, 'fall-rotate', 8 + Math.random() * 4, false);
+
+            document.body.appendChild(diamond);
+
             setTimeout(() => diamond.remove(), 13000);
 
             diamond.addEventListener('click', (event) => {
@@ -630,6 +668,7 @@
                 showPlusOne(posX, event.clientY);
             });
         }
+
 
         function showPlusOne(x, y) {
             const plusOne = document.createElement('div');
@@ -655,16 +694,18 @@
 
         // Initiale Partikel
         for (let i = 0; i < 35; i++) {
-            createParticle();
+            setTimeout(() => {
+                createParticle();
+            }, i * 250);
         }
 
-        setInterval(createParticle, 1250);
+        setInterval(createParticle, 1000);
 
         setInterval(() => {
             if (Math.random() < 0.05) {
                 createDiamondParticle();
             }
-        }, 2000);
+        }, 1500);
 
         window.updateDiamondCounter();
     });
@@ -792,6 +833,53 @@
             });
             observer.observe(globalDiamondCounter, { childList: true });
         }
+    });
+</script>
+
+<script>
+    function createRisingParticleAt(element) {
+        const particle = document.createElement('div');
+        particle.classList.add('rising-particle');
+
+        const size = Math.random() * 10 + 5;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        const grayShade = Math.floor(Math.random() * 150);
+        particle.style.backgroundColor = `rgb(${grayShade}, ${grayShade}, ${grayShade})`;
+
+        const rect = element.getBoundingClientRect();
+        const posX = rect.left + rect.width / 2 - size / 2 + window.scrollX;
+        const posY = rect.top - size + window.scrollY;
+
+        particle.style.left = `${posX}px`;
+        particle.style.top = `${posY}px`;
+
+        particle.style.position = 'absolute';
+        particle.style.pointerEvents = 'none';
+        particle.style.opacity = 0.7;
+
+        particle.style.animationName = 'rise-and-fade';
+        particle.style.animationTimingFunction = 'ease-out';
+        particle.style.animationFillMode = 'forwards';
+        particle.style.animationDuration = `${1.5 + Math.random() * 1.5}s`;
+
+        document.body.appendChild(particle);
+
+        particle.addEventListener('animationend', () => {
+            particle.remove();
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('.your-particle-anchor');
+        elements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                for(let i = 0; i < 5; i++) {
+                    setTimeout(() => createRisingParticleAt(el), i * 200);
+                }
+            });
+        });
     });
 </script>
 

@@ -1,11 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    function smoothScrollWithOffset(target) {
-        const headerHeight = document.querySelector("header")?.offsetHeight || 0;
-        const extraOffset = 50; // probiere hier mal einen sichtbaren Wert
-        const y = target.getBoundingClientRect().top + window.scrollY - headerHeight - extraOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-    }
-
     // NEU: Scroll mit Offset bei vorhandenem Hash in URL (z.B. events.html#lottery)
     if (window.location.hash) {
         // Warten, bis alles gerendert ist
@@ -37,3 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+function smoothScrollWithOffset(target) {
+    const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+    const extraOffset = 50; // probiere hier mal einen sichtbaren Wert
+    const y = target.getBoundingClientRect().top + window.scrollY - headerHeight - extraOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+}

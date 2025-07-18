@@ -108,14 +108,6 @@ input:checked + .switch-slider:before {
   transform: translateX(26px);
 }
 
-.particle {
-  position: absolute;
-  text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
-  border-radius: 0;
-  pointer-events: none;
-  z-index: 2000;
-}
-
 @keyframes flash {
   0%   { background-color: rgba(255, 255, 0, 0.2); }
   100% { background-color: transparent; }
@@ -202,32 +194,48 @@ input:checked + .switch-slider:before {
 html {
   scroll-behavior: smooth;
 }
-@keyframes fall-down {
+
+.particle, .diamond-particle {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  transform-style: preserve-3d; /* für 3D-Rotation */
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  border-radius: 0;
+}
+
+.diamond-particle {
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(59, 130, 246, 0.25);
+  z-index: 2000;
+}
+
+.particle {
+  text-shadow: 0 0 5px rgba(251, 85, 35, 0.5);
+  z-index: 1;
+}
+
+/* 3D-Fall-Animation */
+@keyframes fall-rotate {
   0% {
-    transform: translateY(0) rotate(1deg);
-    opacity: 1;
+    transform: translateY(0) rotateX(var(--start-rotate-x)) rotateY(var(--start-rotate-y)) rotateZ(var(--start-rotate-z));
+    opacity: 0.75;
   }
   100% {
-    transform: translateY(110vh) rotate(360deg);
+    transform: translateY(110vh) rotateX(var(--end-rotate-x)) rotateY(var(--end-rotate-y)) rotateZ(var(--end-rotate-z));
     opacity: 0;
   }
 }
 
-.diamond-particle {
-  will-change: transform, opacity;
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
-  text-shadow: 0 0 5px rgba(59, 130, 246, 0.7);
-  font-weight: bold;
-}
-
-@keyframes float {
+/* Float-Animation mit 3D Rotation */
+@keyframes float-rotate {
   0% {
-    transform: translateY(0) rotate(45deg);
+    transform: translateY(0) rotateX(var(--start-rotate-x)) rotateY(var(--start-rotate-y)) rotateZ(var(--start-rotate-z));
   }
   100% {
-    transform: translateY(500px) rotate(180deg);
+    transform: translateY(500px) rotateX(var(--end-rotate-x)) rotateY(var(--end-rotate-y)) rotateZ(var(--end-rotate-z));
   }
 }
 
@@ -330,5 +338,56 @@ html {
 .wheel.spinning {
   animation: fake-spin 1.2s ease-in-out;
 }
+
+.rising-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background-color: gray;
+  opacity: 0.7;
+  will-change: transform, opacity;
+  animation-name: rise-and-fade;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rise-and-fade {
+  0% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+.custom-checkbox {
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  font-family: 'VT323', monospace;
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+..custom-checkbox input[type="checkbox"] {
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  border: 2px solid #ef4444;
+  border-radius: 0.25rem;
+  background-color: white;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.custom-checkbox input[type="checkbox"]:checked {
+  background-color: #ef4444;
+}
+
 
 
